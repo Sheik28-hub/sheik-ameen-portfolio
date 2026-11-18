@@ -1,5 +1,5 @@
 /**
- * SHEIK AMEEN PORTFOLIO — CORE ANIMATION & INTERACTION UTILITIES
+ * SHEIK AMEEN PORTFOLIO — PREMIUM ANIMATION & INTERACTION UTILITIES
  */
 
 export const isMobile = window.innerWidth < 768;
@@ -85,18 +85,18 @@ export function animateCounter(element, target, duration = 1800, suffix = '', us
 /**
  * 3D Tilt Effect on mousemove for interactive cards
  */
-export function add3DTilt(element, maxDegree = 8) {
+export function add3DTilt(element, maxDegree = 7) {
   if (!element || !hasPointerFine || prefersReducedMotion) return;
 
   function onMouseMove(e) {
     const rect = element.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
     const rotX = (-y * maxDegree).toFixed(2);
     const rotY = (x * maxDegree).toFixed(2);
 
-    element.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+    element.style.transform = `perspective(1100px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
   }
 
   function onMouseLeave() {
@@ -109,6 +109,24 @@ export function add3DTilt(element, maxDegree = 8) {
 
   element.addEventListener('mousemove', onMouseMove);
   element.addEventListener('mouseleave', onMouseLeave);
+}
+
+/**
+ * Spotlight Mouse Follower on Cards (Vercel / Linear effect)
+ */
+export function initSpotlightCards() {
+  if (!hasPointerFine || prefersReducedMotion) return;
+
+  const cards = document.querySelectorAll('.spotlight-card, .project-card, .skill-category, .stat-card, .edu-card, .cert-card, .timeline-card');
+  cards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
 }
 
 /**
@@ -130,11 +148,70 @@ export function initCustomCursor() {
     cursor.style.top = `${mouseY}px`;
   });
 
-  const interactives = document.querySelectorAll('a, button, .project-card, .skill-category, .cert-card, .stat-card, .timeline-card');
+  const interactives = document.querySelectorAll('a, button, .project-card, .skill-category, .cert-card, .stat-card, .timeline-card, .calc-slider');
   interactives.forEach((el) => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
+}
+
+/**
+ * Interactive Live DCF & Financial Valuation Calculator
+ */
+export function initFinancialCalculator() {
+  const waccSlider = document.getElementById('calc-wacc');
+  const growthSlider = document.getElementById('calc-growth');
+  const revenueSlider = document.getElementById('calc-revenue');
+
+  const waccVal = document.getElementById('val-wacc');
+  const growthVal = document.getElementById('val-growth');
+  const revenueVal = document.getElementById('val-revenue');
+  const outputEl = document.getElementById('calc-implied-equity');
+  const statusEl = document.getElementById('calc-verdict');
+
+  if (!waccSlider || !growthSlider || !revenueSlider || !outputEl) return;
+
+  function calculateValuation() {
+    const wacc = parseFloat(waccSlider.value); // e.g. 10.5%
+    const g = parseFloat(growthSlider.value);   // e.g. 3.0%
+    const rev = parseFloat(revenueSlider.value); // e.g. 1500 Cr
+
+    if (waccVal) waccVal.textContent = `${wacc.toFixed(1)}%`;
+    if (growthVal) growthVal.textContent = `${g.toFixed(1)}%`;
+    if (revenueVal) revenueVal.textContent = `₹${rev.toLocaleString('en-IN')} Cr`;
+
+    // Financial DCF Formula Approximation
+    // Enterprise Value = (Normalized Free Cash Flow) / (WACC - g)
+    // Assume 18% Free Cash Flow margin on Revenue
+    const fcf = rev * 0.18;
+    const discountRate = (wacc - g) / 100;
+    
+    // Prevent division by zero or negative
+    const impliedEv = discountRate > 0.01 ? (fcf * (1 + g / 100)) / discountRate : 2500;
+    
+    // Implied Equity Value in Crores
+    const impliedEquity = Math.round(impliedEv);
+    outputEl.textContent = `₹${impliedEquity.toLocaleString('en-IN')} Cr`;
+
+    if (statusEl) {
+      if (impliedEquity > 3000) {
+        statusEl.textContent = '● Premium Valuation · Strong Growth Upside';
+        statusEl.style.color = '#10B981';
+      } else if (impliedEquity >= 2000) {
+        statusEl.textContent = '● Fair Value · Stable Operating Cash Flow';
+        statusEl.style.color = '#00D4FF';
+      } else {
+        statusEl.textContent = '● Conservative / Stressed Macro Scenario';
+        statusEl.style.color = '#F59E0B';
+      }
+    }
+  }
+
+  waccSlider.addEventListener('input', calculateValuation);
+  growthSlider.addEventListener('input', calculateValuation);
+  revenueSlider.addEventListener('input', calculateValuation);
+
+  calculateValuation(); // Initial calculation
 }
 
 /**
@@ -152,10 +229,10 @@ export function hideLoadingScreen(onComplete) {
   const statusEl = loading.querySelector('.loading-status');
 
   const steps = [
-    { text: 'INITIALIZING AMEEN.EXE', status: 'Verifying environment & modules...', progress: 25 },
-    { text: 'LOADING FINANCIAL MODELS', status: 'Compiling portfolio datasets...', progress: 55 },
-    { text: 'STARTING 3D ENGINE', status: 'Mounting Three.js render pipeline...', progress: 85 },
-    { text: 'INITIALIZING AMEEN.EXE', status: 'System ready. Launching...', progress: 100 }
+    { text: 'INITIALIZING AMEEN.EXE', status: 'Calibrating financial modeling engine...', progress: 28 },
+    { text: 'SYNCHRONIZING PORTFOLIO', status: 'Mounting verified risk & valuation datasets...', progress: 60 },
+    { text: 'COMPUTING 3D ENVIRONMENT', status: 'Rendering Three.js market terrain...', progress: 88 },
+    { text: 'SYSTEM READY', status: 'Welcome to the portfolio.', progress: 100 }
   ];
 
   let currentStep = 0;
@@ -174,10 +251,9 @@ export function hideLoadingScreen(onComplete) {
           loading.style.display = 'none';
           if (onComplete) onComplete();
         }, 800);
-      }, 400);
+      }, 350);
     }
-  }, 450);
+  }, 420);
 
-  // Set initial bar
   if (barFill) barFill.style.width = '20%';
 }
