@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgFin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090f1d"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#bgFin)"/>
+  <!-- Financial Statement Header -->
+  <rect x="40" y="30" width="520" height="42" rx="8" fill="#121B2B" stroke="#263449"/>
+  <text x="60" y="56" fill="#00D4FF" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">3-STATEMENT DYNAMIC FINANCIAL MODEL</text>
+  <rect x="420" y="39" width="124" height="24" rx="4" fill="#101624" stroke="#00D4FF" stroke-opacity="0.3"/>
+  <text x="435" y="55" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11">SCENARIOS: 3</text>
+  
+  <!-- Table Mockup -->
+  <!-- Header row -->
+  <rect x="40" y="85" width="520" height="28" fill="#152238"/>
+  <text x="55" y="103" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">METRIC (INR CR)</text>
+  <text x="250" y="103" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">FY24A</text>
+  <text x="330" y="103" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">FY25E</text>
+  <text x="410" y="103" fill="#00D4FF" font-family="'JetBrains Mono', monospace" font-size="11">FY26P</text>
+  <text x="490" y="103" fill="#6366F1" font-family="'JetBrains Mono', monospace" font-size="11">FY27P</text>
+  
+  <!-- Row 1: Revenue -->
+  <line x1="40" y1="140" x2="560" y2="140" stroke="#1f2d42"/>
+  <text x="55" y="132" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="12">Total Revenue</text>
+  <text x="250" y="132" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">1,240.5</text>
+  <text x="330" y="132" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">1,488.6</text>
+  <text x="410" y="132" fill="#00D4FF" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">1,820.0</text>
+  <text x="490" y="132" fill="#6366F1" font-family="'JetBrains Mono', monospace" font-size="12">2,185.0</text>
+  
+  <!-- Row 2: EBITDA -->
+  <line x1="40" y1="172" x2="560" y2="172" stroke="#1f2d42"/>
+  <text x="55" y="164" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="12">EBITDA Margin</text>
+  <text x="250" y="164" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">22.4%</text>
+  <text x="330" y="164" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">24.1%</text>
+  <text x="410" y="164" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">25.8%</text>
+  <text x="490" y="164" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12">26.5%</text>
+  
+  <!-- Row 3: Operating Cash Flow -->
+  <line x1="40" y1="204" x2="560" y2="204" stroke="#1f2d42"/>
+  <text x="55" y="196" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="12">Operating Cash Flow</text>
+  <text x="250" y="196" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">185.2</text>
+  <text x="330" y="196" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">242.0</text>
+  <text x="410" y="196" fill="#00D4FF" font-family="'JetBrains Mono', monospace" font-size="12">315.4</text>
+  <text x="490" y="196" fill="#6366F1" font-family="'JetBrains Mono', monospace" font-size="12">398.2</text>
+  
+  <!-- Row 4: Free Cash Flow (FCFF) -->
+  <line x1="40" y1="236" x2="560" y2="236" stroke="#00D4FF" stroke-opacity="0.4"/>
+  <text x="55" y="228" fill="#00D4FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Unlevered FCF (FCFF)</text>
+  <text x="250" y="228" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">142.0</text>
+  <text x="330" y="228" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12">195.5</text>
+  <text x="410" y="228" fill="#00D4FF" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">260.8</text>
+  <text x="490" y="228" fill="#6366F1" font-family="'JetBrains Mono', monospace" font-size="12">332.1</text>
+
+  <!-- Interactive Sensitivity Box Bottom -->
+  <rect x="40" y="255" width="520" height="75" rx="8" fill="#101624" stroke="#263449"/>
+  <text x="55" y="278" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11">SENSITIVITY MATRIX (WACC vs TERMINAL GROWTH RATE)</text>
+  <!-- Mini matrix pills -->
+  <rect x="55" y="290" width="85" height="24" rx="4" fill="#121B2B" stroke="#1f2d42"/>
+  <text x="65" y="306" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">WACC 10.5%</text>
+  <rect x="150" y="290" width="85" height="24" rx="4" fill="#121B2B" stroke="#1f2d42"/>
+  <text x="160" y="306" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="10">Base: 11.2%</text>
+  <rect x="245" y="290" width="85" height="24" rx="4" fill="#121B2B" stroke="#1f2d42"/>
+  <text x="255" y="306" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">WACC 12.0%</text>
+  <rect x="345" y="290" width="200" height="24" rx="4" fill="#070A12" stroke="#00D4FF" stroke-opacity="0.4"/>
+  <text x="355" y="306" fill="#00D4FF" font-family="'JetBrains Mono', monospace" font-size="10">IMPLIED EQUITY: ₹2,450 CR</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070A12"/>
+      <stop offset="50%" stop-color="#101624"/>
+      <stop offset="100%" stop-color="#070A12"/>
+    </linearGradient>
+    <linearGradient id="ogCyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <filter id="ogGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  
+  <!-- Outer Cyber Border -->
+  <rect x="30" y="30" width="1140" height="570" rx="20" fill="none" stroke="#263449" stroke-width="2"/>
+  <rect x="50" y="50" width="1100" height="530" rx="14" fill="#070A12" opacity="0.6"/>
+
+  <!-- Subtle Grid Accent -->
+  <g stroke="#1a273b" stroke-width="1" opacity="0.4">
+    <line x1="50" y1="180" x2="1150" y2="180"/>
+    <line x1="50" y1="315" x2="1150" y2="315"/>
+    <line x1="50" y1="450" x2="1150" y2="450"/>
+    <line x1="300" y1="50" x2="300" y2="580"/>
+    <line x1="600" y1="50" x2="600" y2="580"/>
+    <line x1="900" y1="50" x2="900" y2="580"/>
+  </g>
+
+  <!-- Corner Brackets -->
+  <path d="M 50 100 L 50 50 L 100 50" fill="none" stroke="#00D4FF" stroke-width="3"/>
+  <path d="M 1100 50 L 1150 50 L 1150 100" fill="none" stroke="#6366F1" stroke-width="3"/>
+  <path d="M 50 530 L 50 580 L 100 580" fill="none" stroke="#6366F1" stroke-width="3"/>
+  <path d="M 1100 580 L 1150 580 L 1150 530" fill="none" stroke="#00D4FF" stroke-width="3"/>
+
+  <!-- Monogram Badge -->
+  <rect x="100" y="100" width="80" height="80" rx="16" fill="#121B2B" stroke="#00D4FF" stroke-width="2"/>
+  <text x="140" y="155" font-family="'Space Grotesk', sans-serif" font-size="40" font-weight="800" text-anchor="middle" fill="url(#ogCyanGrad)">SA</text>
+
+  <!-- Eyebrow Tag -->
+  <text x="210" y="145" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="600" fill="#00D4FF" letter-spacing="4">FINANCE × ANALYTICS</text>
+
+  <!-- Hero Name -->
+  <text x="100" y="270" font-family="'Space Grotesk', sans-serif" font-size="76" font-weight="800" fill="#F8FAFC" letter-spacing="2">SHEIK AMEEN</text>
+
+  <!-- Tagline -->
+  <text x="100" y="340" font-family="'Inter', sans-serif" font-size="32" font-weight="500" fill="#00D4FF">Transforming Financial Data into Strategic Decisions.</p></text>
+
+  <!-- Supporting statement -->
+  <text x="100" y="405" font-family="'Inter', sans-serif" font-size="20" fill="#94A3B8">Financial Analysis · Investment Research · Business Intelligence · Valuation &amp; Risk Analytics</text>
+
+  <!-- Bottom Badges / Metrics -->
+  <g transform="translate(100, 470)">
+    <rect width="210" height="54" rx="10" fill="#121B2B" stroke="#263449"/>
+    <text x="20" y="34" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="bold" fill="#00D4FF">35,000+</text>
+    <text x="110" y="34" font-family="'Inter', sans-serif" font-size="13" fill="#94A3B8">Audited Trans</text>
+
+    <rect x="230" width="200" height="54" rx="10" fill="#121B2B" stroke="#263449"/>
+    <text x="250" y="34" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="bold" fill="#6366F1">KFin Tech</text>
+    <text x="345" y="34" font-family="'Inter', sans-serif" font-size="13" fill="#94A3B8">Associate</text>
+
+    <rect x="450" width="220" height="54" rx="10" fill="#121B2B" stroke="#263449"/>
+    <text x="470" y="34" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="bold" fill="#10b981">MBA + BBA</text>
+    <text x="575" y="34" font-family="'Inter', sans-serif" font-size="13" fill="#94A3B8">Analytics</text>
+
+    <rect x="690" width="250" height="54" rx="10" fill="#121B2B" stroke="#263449"/>
+    <text x="710" y="34" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="bold" fill="#F8FAFC">ameensheik2902@gmail.com</text>
+  </g>
+</svg>

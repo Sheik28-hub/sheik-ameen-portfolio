@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- Primary SEO Metadata -->
+  <title>Sheik Ameen | Finance &amp; Analytics Professional</title>
+  <meta name="description" content="Finance and Analytics professional specializing in financial analysis, investment analysis, financial modelling, business intelligence and data analytics. Transforming financial data into strategic decisions." />
+  <meta name="keywords" content="Sheik Ameen, Finance Analyst, Business Analytics, Financial Modelling, DCF Valuation, Credit Risk, Power BI, SQL, Python, KFin Technologies" />
+  <meta name="author" content="Sheik Ameen" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://sheikameen.com" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sheikameen.com" />
+  <meta property="og:title" content="Sheik Ameen | Finance × Analytics" />
+  <meta property="og:description" content="Transforming Financial Data into Strategic Decisions. MBA professional combining financial analysis, investment research, and BI." />
+  <meta property="og:image" content="/assets/branding/og-image.svg" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sheik Ameen | Finance × Analytics" />
+  <meta name="twitter:description" content="Transforming Financial Data into Strategic Decisions. MBA professional combining financial analysis, investment research, and BI." />
+  <meta name="twitter:image" content="/assets/branding/og-image.svg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/styles/global.css" />
+  <link rel="stylesheet" href="./src/styles/animations.css" />
+  <link rel="stylesheet" href="./src/styles/responsive.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       00. LOADING SCREEN (INITIALIZING AMEEN.EXE)
+       ========================================================================= -->
+  <div id="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo-box">
+        <span class="loading-logo">SA</span>
+      </div>
+      <div class="loading-text">
+        <span class="loading-text-content">INITIALIZING AMEEN.EXE</span><span class="loading-cursor">_</span>
+      </div>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
+      <div class="loading-status">Verifying environment &amp; modules...</div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor Follower for Desktop -->
+  <div id="cursor"></div>
+
+  <!-- =========================================================================
+       NAVIGATION BAR
+       ========================================================================= -->
+  <header>
+    <nav id="navbar">
+      <div class="container nav-container">
+        <a href="#hero" class="nav-logo">
+          <span>SHEIK AMEEN</span>
+          <span class="nav-logo-tag">FINANCE × ANALYTICS</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <a href="/assets/resume/Sheik_Ameen_Resume.pdf" download class="nav-cta-btn">RESUME.PDF ↓</a>
+          <button class="nav-hamburger" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         SECTION 01: HERO & 3D INTERACTIVE CANVAS
+         ========================================================================= -->
+    <section id="hero">
+      <canvas id="three-canvas"></canvas>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">FINANCE × ANALYTICS</p>
+
+        <!-- EXACT NAME REQUIREMENT: S H E I K   A M E E N -->
+        <h1 class="hero-name" aria-label="Sheik Ameen">
+          <span class="letter">S</span>
+          <span class="letter">H</span>
+          <span class="letter">E</span>
+          <span class="letter">I</span>
+          <span class="letter">K</span>
+          <span class="letter letter-space">&nbsp;</span>
+          <span class="letter accent-letter">A</span>
+          <span class="letter accent-letter">M</span>
+          <span class="letter accent-letter">E</span>
+          <span class="letter accent-letter">E</span>
+          <span class="letter accent-letter">N</span>
+        </h1>
+
+        <h2 class="hero-tagline">Transforming Financial Data into Strategic Decisions.</h2>
+
+        <p class="hero-description">
+          An MBA professional specializing in Finance and Business Analytics, combining financial analysis, investment research, business intelligence, risk assessment and data analytics to support informed business decisions.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Explore My Work</a>
+          <a href="/assets/resume/Sheik_Ameen_Resume.pdf" download class="btn btn-secondary">Download Resume</a>
+          <a href="#contact" class="btn btn-ghost">Let's Connect →</a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 02: ABOUT ME
+         ========================================================================= -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">01 // ABOUT</p>
+          <h2 class="section-title">Beyond Numbers. Into Decisions.</h2>
+          <p class="section-subtitle">Bridging financial acumen with enterprise analytics to solve complex operational and strategic challenges.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left: Professional Photograph & Badges -->
+          <div class="about-image-card reveal-left">
+            <div class="profile-img-wrapper">
+              <img src="/assets/images/sheik-ameen.jpg" alt="Sheik Ameen" class="profile-img" onerror="this.style.display='none'; document.querySelector('.profile-img-placeholder').style.display='flex';" />
+              <div class="profile-img-placeholder">
+                <span class="placeholder-initials">SA</span>
+              </div>
+            </div>
+
+            <div class="about-image-badges">
+              <span class="about-badge about-badge-active">● Active Professional</span>
+              <span class="about-badge">KFin Technologies Ltd.</span>
+              <span class="about-badge">Hyderabad, India</span>
+            </div>
+          </div>
+
+          <!-- Right: Narrative & Verified Details -->
+          <div class="about-content reveal-right">
+            <p class="about-lead">
+              I am an MBA graduate specializing in <strong>Business Analytics and Finance</strong>, with professional experience in financial services, internal controls, transaction surveillance and financial data validation.
+            </p>
+
+            <p class="about-text">
+              Currently working at <strong>KFin Technologies Ltd.</strong>, I work with large-scale operational and financial datasets, focusing on reconciliation, exception analysis, reporting and automation.
+            </p>
+
+            <p class="about-text">
+              My analytical interests extend across investment analysis, financial modelling, business intelligence, DCF valuation, credit risk modelling, and data-driven decision-making.
+            </p>
+
+            <div class="about-meta-grid">
+              <div class="about-meta-item">
+                <span class="meta-label">CURRENT ROLE</span>
+                <span class="meta-value">Associate – Surveillance</span>
+              </div>
+              <div class="about-meta-item">
+                <span class="meta-label">ORGANIZATION</span>
+                <span class="meta-value">KFin Technologies Ltd.</span>
+              </div>
+              <div class="about-meta-item">
+                <span class="meta-label">SPECIALIZATION</span>
+                <span class="meta-value">Finance × Analytics</span>
+              </div>
+              <div class="about-meta-item">
+                <span class="meta-label">LOCATION</span>
+                <span class="meta-value">Hyderabad, India</span>
+              </div>
+              <div class="about-meta-item">
+                <span class="meta-label">ACADEMIC CREDENTIAL</span>
+                <span class="meta-value">MBA (Anna Univ) · BBA</span>
+              </div>
+              <div class="about-meta-item">
+                <span class="meta-label">FOCUS DOMAIN</span>
+                <span class="meta-value">BFSI &amp; Risk Analytics</span>
+              </div>
+            </div>
+
+            <div class="about-cta-group">
+              <a href="/assets/resume/Sheik_Ameen_Resume.pdf" download class="btn btn-primary">Download Complete Resume</a>
+              <a href="https://www.linkedin.com/in/sheik-ameen" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Connect on LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verified Statistics Cards -->
+        <div class="stats-grid">
+          <div class="stat-card reveal delay-1">
+            <div class="stat-number" data-target="1" data-suffix="+">0+</div>
+            <div class="stat-label">Years Experience</div>
+            <div class="stat-desc">Financial Services &amp; Analytics</div>
+          </div>
+
+          <div class="stat-card reveal delay-2">
+            <div class="stat-number" data-target="35000" data-suffix="+">0+</div>
+            <div class="stat-label">Transactions &amp; Alerts</div>
+            <div class="stat-desc">Surveillance &amp; Quality Audit</div>
+          </div>
+
+          <div class="stat-card reveal delay-3">
+            <div class="stat-number" data-target="2" data-suffix="">0</div>
+            <div class="stat-label">Academic Degrees</div>
+            <div class="stat-desc">MBA Analytics &amp; Finance + BBA</div>
+          </div>
+
+          <div class="stat-card reveal delay-4">
+            <div class="stat-number" data-target="6" data-suffix="">0</div>
+            <div class="stat-label">Certifications &amp; Training</div>
+            <div class="stat-desc">Tableau · Power BI · SQL · Modeling</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 03: PROFESSIONAL EXPERIENCE (TIMELINE)
+         ========================================================================= -->
+    <section id="experience" class="section experience-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">02 // EXPERIENCE</p>
+          <h2 class="section-title">Professional Journey</h2>
+          <p class="section-subtitle">Demonstrated operational rigor, financial validation, regulatory reporting and workflow automation.</p>
+        </div>
+
+        <div class="experience-wrapper">
+          <div class="timeline">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="company-title">KFin Technologies Ltd.</h3>
+                    <p class="role-title">Associate – Compliance, Internal Controls &amp; Surveillance</p>
+                  </div>
+                  <div class="timeline-meta">
+                    <span class="period-badge">February 2026 – Present</span>
+                    <span class="location-badge">📍 Hyderabad, India</span>
+                  </div>
+                </div>
+
+                <ul class="responsibilities-list">
+                  <li><strong>Compliance &amp; Surveillance:</strong> Conduct end-to-end transaction surveillance and compliance reviews across large-scale mutual fund and NPS transaction operations.</li>
+                  <li><strong>NAV Validation &amp; Reconciliation:</strong> Perform daily Net Asset Value (NAV) validation, variance exception investigation, and financial data integrity checks.</li>
+                  <li><strong>Mutual Fund Exit Load Verification:</strong> Audit exit load fee computations, penalty exceptions, and client redemption accounting schedules.</li>
+                  <li><strong>NPS Withdrawal Reporting:</strong> Process and validate National Pension System (NPS) withdrawal requests under strict regulatory guidelines.</li>
+                  <li><strong>Financial Data Validation:</strong> Execute comprehensive data quality assurance routines across multi-system financial feeds and ledger records.</li>
+                  <li><strong>Internal Control Testing:</strong> Support operational risk audits by evaluating control efficacy, identifying gaps, and documenting audit findings.</li>
+                  <li><strong>MIS Reporting:</strong> Compile and distribute daily/weekly management information systems (MIS) dashboards for senior executive visibility.</li>
+                  <li><strong>VBA &amp; Spreadsheet Automation:</strong> Developed VBA macros and automated spreadsheet routines to streamline repetitive validation workflows and reduce manual handling time.</li>
+                </ul>
+
+                <!-- Highlighted Achievement Card -->
+                <div class="achievement-card">
+                  <div class="achievement-icon">⚡</div>
+                  <div>
+                    <div class="achievement-number" data-target="35000" data-suffix="+">35,000+</div>
+                    <div class="achievement-label">Transactions &amp; Surveillance Alerts Reviewed with High Accuracy</div>
+                  </div>
+                </div>
+
+                <div class="tech-tags">
+                  <span class="tech-tag">Advanced Excel</span>
+                  <span class="tech-tag">VBA Automation</span>
+                  <span class="tech-tag">SQL</span>
+                  <span class="tech-tag">Power BI</span>
+                  <span class="tech-tag">Internal Controls</span>
+                  <span class="tech-tag">Surveillance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 04: PROJECT PORTFOLIO
+         ========================================================================= -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">03 // PROJECTS</p>
+          <h2 class="section-title">Featured Project Portfolio</h2>
+          <p class="section-subtitle">Real-world analytics applications spanning credit risk, financial modelling, M&amp;A valuation, and enterprise BI.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 01: Shriram Finance -->
+          <div class="project-card reveal delay-1">
+            <div class="project-visual">
+              <img src="/assets/projects/credit-risk.svg" alt="Predictive Analytics for Loan Default Risk" />
+              <span class="project-badge-top">CREDIT RISK · BFS DOMAIN</span>
+            </div>
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">Predictive Analytics for Loan Default Risk</h3>
+              </div>
+              <p class="project-org">Shriram Finance Ltd. | Jan 2025 – May 2025</p>
+              <p class="project-description">
+                Engineered a comprehensive loan portfolio analytics and default prediction framework. Evaluated historical borrower repayment patterns, demographic risk tiers, and delinquency markers to transform rule-based credit evaluations into proactive risk forecasting.
+              </p>
+              <div class="project-details-box">
+                <div class="detail-line"><strong>Problem:</strong><span>High portfolio delinquency risk requiring proactive identification of loan defaults.</span></div>
+                <div class="detail-line"><strong>Methodology:</strong><span>SQL extraction, data cleaning, feature engineering, logistic regression, and interactive Power BI KPI dashboards.</span></div>
+                <div class="detail-line"><strong>Results:</strong><span>Improved default classification accuracy by ~15% and risk identification speed by 18%.</span></div>
+              </div>
+              <div class="project-tools">
+                <span class="tool-tag">SQL</span>
+                <span class="tool-tag">Python (Pandas)</span>
+                <span class="tool-tag">Power BI (DAX)</span>
+                <span class="tool-tag">Advanced Excel</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 02: Integrated Financial Modelling -->
+          <div class="project-card reveal delay-2">
+            <div class="project-visual">
+              <img src="/assets/projects/financial-model.svg" alt="Integrated Financial Modelling" />
+              <span class="project-badge-top">CORPORATE FINANCE · MODELING</span>
+            </div>
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">Integrated 3-Statement Financial Model</h3>
+              </div>
+              <p class="project-org">Corporate Finance Project</p>
+              <p class="project-description">
+                Constructed a dynamic, fully integrated financial forecast linking the Income Statement, Balance Sheet, and Cash Flow Statement. Programmed multi-case scenario analyses (Base, Bull, Bear) and sensitivity matrices to evaluate liquidity under stressed macroeconomic cycles.
+              </p>
+              <div class="project-details-box">
+                <div class="detail-line"><strong>Scope:</strong><span>5-year forward operating projection with circular debt schedules, working capital revolvers, and CAPEX drivers.</span></div>
+                <div class="detail-line"><strong>Methodology:</strong><span>Dynamic corkscrew debt modeling, scenario selectors (INDEX/MATCH), and two-variable data tables.</span></div>
+                <div class="detail-line"><strong>Output:</strong><span>Granular visibility into debt service coverage ratio (DSCR), interest coverage, and unlevered free cash flow.</span></div>
+              </div>
+              <div class="project-tools">
+                <span class="tool-tag">Financial Modeling</span>
+                <span class="tool-tag">Excel</span>
+                <span class="tool-tag">Scenario Analysis</span>
+                <span class="tool-tag">Sensitivity Analysis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 03: JPMorgan Chase Simulation -->
+          <div class="project-card reveal delay-3">
+            <div class="project-visual">
+              <img src="/assets/projects/dcf-valuation.svg" alt="DCF Valuation and M&A Analysis" />
+              <span class="project-badge-top">INVESTMENT BANKING SIMULATION</span>
+            </div>
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">DCF Valuation &amp; M&amp;A Target Analysis</h3>
+              </div>
+              <p class="project-org">JPMorgan Chase Investment Banking Job Simulation | Aug 2025 – Dec 2025</p>
+              <p class="project-description">
+                Assessed strategic and financial fit of acquisition candidates for an enterprise client. Formulated a Discounted Cash Flow (DCF) model incorporating competitive bidding tensions, supply chain disruption scenarios, and WACC variations to draft an executive investment memorandum.
+              </p>
+              <div class="project-details-box">
+                <div class="detail-line"><strong>Simulation Scope:</strong><span>Target screening, valuation football field synthesis, and bid threshold recommendation.</span></div>
+                <div class="detail-line"><strong>Methodology:</strong><span>Unlevered DCF, terminal multiple &amp; Gordon growth methods, trading comps, and EPS accretion/dilution.</span></div>
+                <div class="detail-line"><strong>Deliverable:</strong><span>Executive Investment Memorandum for C-suite decision-makers outlining acquisition terms.</span></div>
+              </div>
+              <div class="project-tools">
+                <span class="tool-tag">DCF Valuation</span>
+                <span class="tool-tag">M&amp;A Analysis</span>
+                <span class="tool-tag">Excel</span>
+                <span class="tool-tag">Investment Memo</span>
+              </div>
+              <p class="project-footer-note">* Completed via Forage Virtual Experience Program</p>
+            </div>
+          </div>
+
+          <!-- Project 04: Deloitte Australia Simulation -->
+          <div class="project-card reveal delay-4">
+            <div class="project-visual">
+              <img src="/assets/projects/powerbi-dashboard.svg" alt="Business Intelligence and Data Analytics" />
+              <span class="project-badge-top">FORENSIC &amp; BI SIMULATION</span>
+            </div>
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">Business Intelligence &amp; Data Analytics</h3>
+              </div>
+              <p class="project-org">Deloitte Australia Data Analytics Job Simulation | Aug 2025 – Dec 2025</p>
+              <p class="project-description">
+                Conducted forensic data investigation on complex operational datasets. Built interactive Tableau dashboards identifying transaction anomalies, demographic disparity metrics, and operational performance deviations, communicating findings into actionable client governance steps.
+              </p>
+              <div class="project-details-box">
+                <div class="detail-line"><strong>Simulation Scope:</strong><span>Data cleaning, anomaly detection, exploratory data analysis (EDA), and executive visual storytelling.</span></div>
+                <div class="detail-line"><strong>Methodology:</strong><span>Tableau visual calculations, outlier clustering, statistical distribution analysis, and business impact synthesis.</span></div>
+                <div class="detail-line"><strong>Deliverable:</strong><span>Production-ready Tableau dashboard suite and forensic summary report for leadership.</span></div>
+              </div>
+              <div class="project-tools">
+                <span class="tool-tag">Tableau Desktop</span>
+                <span class="tool-tag">Forensic Analytics</span>
+                <span class="tool-tag">Data Cleaning</span>
+                <span class="tool-tag">Excel</span>
+              </div>
+              <p class="project-footer-note">* Completed via Forage Virtual Experience Program</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 05: SKILLS & EXPERTISE
+         ========================================================================= -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">04 // CAPABILITIES</p>
+          <h2 class="section-title">Skills &amp; Functional Expertise</h2>
+          <p class="section-subtitle">Structured competencies spanning quantitative finance, risk analytics, and modern business intelligence tools.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- 01. Finance & Corporate Finance -->
+          <div class="skill-category reveal delay-1">
+            <div class="category-header">
+              <span class="category-num">01</span>
+              <h3 class="category-title">Finance &amp; Corporate Finance</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Financial Statement Analysis</span>
+              <span class="skill-tag">Financial Modelling</span>
+              <span class="skill-tag">DCF Valuation</span>
+              <span class="skill-tag">Financial Forecasting</span>
+              <span class="skill-tag">Ratio Analysis</span>
+              <span class="skill-tag">Scenario Analysis</span>
+              <span class="skill-tag">Working Capital Analysis</span>
+              <span class="skill-tag">Budgeting &amp; Variance</span>
+            </div>
+          </div>
+
+          <!-- 02. Investment & Risk -->
+          <div class="skill-category reveal delay-2">
+            <div class="category-header">
+              <span class="category-num">02</span>
+              <h3 class="category-title">Investment &amp; Risk</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Investment Analysis</span>
+              <span class="skill-tag">M&amp;A Target Analysis</span>
+              <span class="skill-tag">Credit Risk Analysis</span>
+              <span class="skill-tag">Portfolio Performance</span>
+              <span class="skill-tag">Risk Assessment</span>
+              <span class="skill-tag">Transaction Surveillance</span>
+              <span class="skill-tag">Internal Controls Testing</span>
+              <span class="skill-tag">Compliance Monitoring</span>
+            </div>
+          </div>
+
+          <!-- 03. Data Analytics -->
+          <div class="skill-category reveal delay-3">
+            <div class="category-header">
+              <span class="category-num">03</span>
+              <h3 class="category-title">Data Analytics &amp; Programming</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Advanced Excel</span>
+              <span class="skill-tag">SQL (Queries &amp; Joins)</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Power Query</span>
+              <span class="skill-tag">SPSS</span>
+              <span class="skill-tag">Data Cleaning &amp; ETL</span>
+            </div>
+          </div>
+
+          <!-- 04. Business Intelligence -->
+          <div class="skill-category reveal delay-4">
+            <div class="category-header">
+              <span class="category-num">04</span>
+              <h3 class="category-title">Business Intelligence &amp; MIS</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">DAX Measures</span>
+              <span class="skill-tag">Tableau</span>
+              <span class="skill-tag">VBA Automation</span>
+              <span class="skill-tag">Executive MIS Reporting</span>
+              <span class="skill-tag">Data Visualization</span>
+              <span class="skill-tag">Dashboard UX Design</span>
+              <span class="skill-tag">KPI Tracking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 06: EDUCATION
+         ========================================================================= -->
+    <section id="education" class="section education-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">05 // EDUCATION</p>
+          <h2 class="section-title">Academic Qualifications</h2>
+          <p class="section-subtitle">A rigorous foundation in finance, management theory, quantitative modeling, and statistical analytics.</p>
+        </div>
+
+        <div class="education-grid">
+          <!-- MBA Card -->
+          <div class="edu-card reveal-left">
+            <div class="edu-watermark">MBA</div>
+            <h3 class="edu-degree">MBA – Master of Business Administration</h3>
+            <p class="edu-field">Dual Specialization: Business Analytics &amp; Finance</p>
+            <p class="edu-institution">M.A.M B-School, Tiruchirappalli</p>
+            <p class="edu-university">Affiliated to Anna University</p>
+
+            <div class="edu-meta-badges">
+              <span class="edu-period-badge">📅 2023 – 2025</span>
+              <span class="edu-cgpa-badge">CGPA: 7.4 / 10</span>
+            </div>
+
+            <div class="edu-highlights">
+              <span class="edu-tag">Financial Analytics</span>
+              <span class="edu-tag">Corporate Finance</span>
+              <span class="edu-tag">Predictive Modeling</span>
+              <span class="edu-tag">Investment Management</span>
+              <span class="edu-tag">Business Research</span>
+            </div>
+          </div>
+
+          <!-- BBA Card -->
+          <div class="edu-card reveal-right">
+            <div class="edu-watermark">BBA</div>
+            <h3 class="edu-degree">BBA – Bachelor of Business Administration</h3>
+            <p class="edu-field">Specialization: Business Administration &amp; Commerce</p>
+            <p class="edu-institution">M.I.E.T Arts &amp; Science College, Tiruchirappalli</p>
+            <p class="edu-university">Affiliated to Bharathidasan University</p>
+
+            <div class="edu-meta-badges">
+              <span class="edu-period-badge">📅 2020 – 2023</span>
+              <span class="edu-cgpa-badge">CGPA: 7.6 / 10</span>
+            </div>
+
+            <div class="edu-highlights">
+              <span class="edu-tag">Business Management</span>
+              <span class="edu-tag">Financial Accounting</span>
+              <span class="edu-tag">Managerial Economics</span>
+              <span class="edu-tag">Organizational Strategy</span>
+              <span class="edu-tag">Operations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 07: CERTIFICATIONS & CREDENTIALS
+         ========================================================================= -->
+    <section id="certifications" class="section certs-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">06 // CREDENTIALS</p>
+          <h2 class="section-title">Certifications &amp; Professional Training</h2>
+          <p class="section-subtitle">Verified accreditations across enterprise visualization, data analytics, and advanced financial modeling.</p>
+        </div>
+
+        <div class="certs-grid">
+          <!-- Cert 1: Tableau -->
+          <div class="cert-card reveal delay-1">
+            <div class="cert-badge-wrapper">
+              <img src="/assets/certificates/tableau.svg" alt="Tableau Desktop Specialist" />
+            </div>
+            <span class="cert-provider">TABLEAU</span>
+            <h3 class="cert-name">Tableau Desktop Specialist</h3>
+            <span class="cert-year-tag">Certified 2025</span>
+          </div>
+
+          <!-- Cert 2: Power BI -->
+          <div class="cert-card reveal delay-2">
+            <div class="cert-badge-wrapper">
+              <img src="/assets/certificates/powerbi.svg" alt="Power BI Data Analyst" />
+            </div>
+            <span class="cert-provider">MICROSOFT</span>
+            <h3 class="cert-name">Microsoft Power BI Data Analyst</h3>
+            <span class="cert-year-tag">Certified 2024</span>
+          </div>
+
+          <!-- Cert 3: MySQL -->
+          <div class="cert-card reveal delay-3">
+            <div class="cert-badge-wrapper">
+              <img src="/assets/certificates/sql.svg" alt="MySQL for Data Analytics" />
+            </div>
+            <span class="cert-provider">MYSQL / COURSERA</span>
+            <h3 class="cert-name">MySQL for Data Analytics</h3>
+            <span class="cert-year-tag">Certified 2024</span>
+          </div>
+
+          <!-- Cert 4: Financial Modeling -->
+          <div class="cert-card reveal delay-4">
+            <div class="cert-badge-wrapper">
+              <img src="/assets/certificates/financial-modelling.svg" alt="Advanced Financial Modeling Training" />
+            </div>
+            <span class="cert-provider">FINANCIAL ANALYSIS TRAINING</span>
+            <h3 class="cert-name">Advanced Financial Modeling</h3>
+            <span class="cert-year-tag">Completed 2025</span>
+          </div>
+
+          <!-- Cert 5: Predictive Modeling & ML -->
+          <div class="cert-card reveal delay-5">
+            <div class="cert-badge-wrapper">
+              <img src="/assets/certificates/ml.svg" alt="Predictive Modeling & ML Training" />
+            </div>
+            <span class="cert-provider">ANALYTICS TRAINING PROGRAM</span>
+            <h3 class="cert-name">Predictive Modeling &amp; Machine Learning</h3>
+            <span class="cert-year-tag">Completed 2025</span>
+          </div>
+
+          <!-- Cert 6: GA4 -->
+          <div class="cert-card reveal delay-6">
+            <div class="cert-badge-wrapper">
+              <img src="/assets/certificates/ga4.svg" alt="Google Analytics Certification GA4" />
+            </div>
+            <span class="cert-provider">GOOGLE</span>
+            <h3 class="cert-name">Google Analytics Certification (GA4)</h3>
+            <span class="cert-year-tag">Certified 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 08: CONTACT & OPPORTUNITIES
+         ========================================================================= -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="section-header reveal">
+            <p class="section-label">07 // CONTACT</p>
+            <h2 class="section-title">Let's Connect.</h2>
+            <p class="section-subtitle">
+              Open to career opportunities across Financial Analysis, Investment Analysis, FP&amp;A, Business Analytics, Credit Risk, and Business Intelligence.
+            </p>
+          </div>
+
+          <div class="contact-info-cards reveal">
+            <div class="contact-card">
+              <div class="contact-card-icon">✉️</div>
+              <span class="contact-card-label">EMAIL ADDRESS</span>
+              <span class="contact-card-value">ameensheik2902@gmail.com</span>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card-icon">💼</div>
+              <span class="contact-card-label">LINKEDIN PROFILE</span>
+              <span class="contact-card-value">linkedin.com/in/sheik-ameen</span>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card-icon">📍</div>
+              <span class="contact-card-label">PRIMARY LOCATION</span>
+              <span class="contact-card-value">Hyderabad, India</span>
+            </div>
+          </div>
+
+          <div class="contact-actions-grid reveal">
+            <a href="mailto:ameensheik2902@gmail.com" class="contact-btn">
+              <span class="contact-btn-icon">✉️</span>
+              <span>Send Direct Email</span>
+            </a>
+
+            <button id="copy-email-btn" class="contact-btn" type="button" aria-label="Copy Email to Clipboard">
+              <span class="contact-btn-icon">📋</span>
+              <span>Copy Email</span>
+            </button>
+
+            <a href="https://www.linkedin.com/in/sheik-ameen" target="_blank" rel="noopener noreferrer" class="contact-btn">
+              <span class="contact-btn-icon">💼</span>
+              <span>Visit LinkedIn Profile</span>
+            </a>
+
+            <a href="/assets/resume/Sheik_Ameen_Resume.pdf" download class="contact-btn">
+              <span class="contact-btn-icon">📄</span>
+              <span>Download Official Resume</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">SHEIK AMEEN</span>
+          <span class="footer-tagline">Finance × Analytics · Transforming Financial Data into Strategic Decisions</span>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="footer-year">2026</span> Sheik Ameen. All rights reserved. Designed for Finance &amp; Analytics Leadership.</p>
+        <button id="back-to-top" class="back-to-top" type="button">Back to top ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Application Bundle -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

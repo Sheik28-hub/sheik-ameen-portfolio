@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D4FF" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="#070A12" stroke="#263449" stroke-width="2"/>
+  <rect x="8" y="8" width="104" height="104" rx="20" fill="#101624" opacity="0.6"/>
+  <!-- Diamond Grid Accent -->
+  <path d="M 60 16 L 104 60 L 60 104 L 16 60 Z" fill="none" stroke="#263449" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Monogram SA -->
+  <text x="60" y="74" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="44" font-weight="800" text-anchor="middle" fill="url(#neonGrad)" filter="url(#glow)">SA</text>
+  <!-- Cyber Node Accents -->
+  <circle cx="60" cy="16" r="3" fill="#00D4FF" />
+  <circle cx="104" cy="60" r="3" fill="#6366F1" />
+  <circle cx="60" cy="104" r="3" fill="#00D4FF" />
+  <circle cx="16" cy="60" r="3" fill="#6366F1" />
+</svg>

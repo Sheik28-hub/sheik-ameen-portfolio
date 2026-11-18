@@ -1,0 +1,179 @@
+/* ==========================================================================
+   SHEIK AMEEN — 3D PORTFOLIO ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   KEYFRAME DEFINITIONS
+   -------------------------------------------------------------------------- */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 50px rgba(99, 102, 241, 0.3);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes dotPulseRing {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(0, 212, 255, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+  }
+}
+
+@keyframes borderShine {
+  0% { border-color: rgba(0, 212, 255, 0.3); }
+  50% { border-color: rgba(99, 102, 241, 0.7); }
+  100% { border-color: rgba(0, 212, 255, 0.3); }
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL-TRIGGERED REVEAL STATES
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-45px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(45px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delay helpers */
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+.delay-5 { transition-delay: 0.5s !important; }
+.delay-6 { transition-delay: 0.6s !important; }
+
+/* --------------------------------------------------------------------------
+   HERO LETTER-BY-LETTER SEQUENCING
+   -------------------------------------------------------------------------- */
+.hero-name .letter:nth-child(1)  { transition-delay: 0.05s; }
+.hero-name .letter:nth-child(2)  { transition-delay: 0.10s; }
+.hero-name .letter:nth-child(3)  { transition-delay: 0.15s; }
+.hero-name .letter:nth-child(4)  { transition-delay: 0.20s; }
+.hero-name .letter:nth-child(5)  { transition-delay: 0.25s; }
+.hero-name .letter:nth-child(6)  { transition-delay: 0.30s; } /* space */
+.hero-name .letter:nth-child(7)  { transition-delay: 0.35s; }
+.hero-name .letter:nth-child(8)  { transition-delay: 0.40s; }
+.hero-name .letter:nth-child(9)  { transition-delay: 0.45s; }
+.hero-name .letter:nth-child(10) { transition-delay: 0.50s; }
+.hero-name .letter:nth-child(11) { transition-delay: 0.55s; }
+
+/* --------------------------------------------------------------------------
+   ACTIVE ANIMATION UTILITIES
+   -------------------------------------------------------------------------- */
+.animate-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.timeline-dot.pulse {
+  animation: dotPulseRing 2.4s infinite cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.achievement-card.highlight {
+  animation: borderShine 4s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .reveal, .reveal-left, .reveal-right, .reveal-scale,
+  .hero-eyebrow, .hero-tagline, .hero-description, .hero-buttons,
+  .hero-name .letter {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  #loading-screen {
+    display: none !important;
+  }
+
+  #cursor {
+    display: none !important;
+  }
+}

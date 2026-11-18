@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgJPM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d18"/>
+      <stop offset="100%" stop-color="#04060c"/>
+    </linearGradient>
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#bgJPM)"/>
+  
+  <!-- Header badge -->
+  <rect x="40" y="25" width="220" height="30" rx="6" fill="#121B2B" stroke="#263449"/>
+  <text x="52" y="45" fill="#6366F1" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">JPMORGAN CHASE SIMULATION</text>
+  <text x="280" y="45" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="13">M&amp;A / DCF VALUATION BRIDGE</text>
+
+  <!-- Football Field Chart / Valuation Range -->
+  <g transform="translate(40, 70)">
+    <!-- Method 1: 52-Wk Range -->
+    <text x="10" y="30" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="11">52-Week Range</text>
+    <line x1="160" y1="26" x2="480" y2="26" stroke="#1f2d42" stroke-width="1"/>
+    <rect x="220" y="18" width="140" height="16" rx="4" fill="#263449" opacity="0.8"/>
+    <text x="370" y="30" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">$45 - $62</text>
+
+    <!-- Method 2: Public Comps -->
+    <text x="10" y="65" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="11">Trading Comps (EV/EBITDA)</text>
+    <line x1="160" y1="61" x2="480" y2="61" stroke="#1f2d42" stroke-width="1"/>
+    <rect x="250" y="53" width="160" height="16" rx="4" fill="#263449" opacity="0.9"/>
+    <text x="420" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">$52 - $74</text>
+
+    <!-- Method 3: Precedent M&A Transactions -->
+    <text x="10" y="100" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="11">Precedent M&amp;A Deals</text>
+    <line x1="160" y1="96" x2="480" y2="96" stroke="#1f2d42" stroke-width="1"/>
+    <rect x="280" y="88" width="170" height="16" rx="4" fill="#6366F1" opacity="0.6"/>
+    <text x="460" y="100" fill="#6366F1" font-family="'JetBrains Mono', monospace" font-size="10">$58 - $82</text>
+
+    <!-- Method 4: DCF Valuation (Base & Upside) -->
+    <text x="10" y="135" fill="#00D4FF" font-family="'Inter', sans-serif" font-size="11" font-weight="600">DCF Valuation (Intrinsic)</text>
+    <line x1="160" y1="131" x2="480" y2="131" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="290" y="123" width="180" height="16" rx="4" fill="url(#bridgeGrad)"/>
+    <text x="480" y="135" fill="#00D4FF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">$60 - $86</text>
+
+    <!-- Target Offer Bid Range -->
+    <rect x="330" y="15" width="2" height="140" fill="#f43f5e" stroke-dasharray="2 2"/>
+    <text x="335" y="170" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="10">OFFER BID: $68/SHARE</text>
+  </g>
+
+  <!-- M&A Memorandum Summary Card -->
+  <rect x="40" y="255" width="520" height="80" rx="8" fill="#121B2B" stroke="#263449"/>
+  <text x="55" y="278" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="600">INVESTMENT MEMORANDUM FINDINGS</text>
+  <text x="55" y="298" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="11">Strategic acquisition recommendation with 22% synergy premium, downside sensitivity</text>
+  <text x="55" y="316" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="11">tested under supply chain disruptions and aggressive bidding counter-tactics.</text>
+  
+  <rect x="430" y="270" width="115" height="48" rx="6" fill="#070A12" stroke="#6366F1" stroke-opacity="0.5"/>
+  <text x="445" y="290" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">ACCRETION</text>
+  <text x="445" y="308" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">+8.4% EPS</text>
+</svg>

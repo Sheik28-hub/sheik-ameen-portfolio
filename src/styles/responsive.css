@@ -1,0 +1,379 @@
+/* ==========================================================================
+   SHEIK AMEEN — 3D PORTFOLIO RESPONSIVE BREAKPOINTS
+   Devices targeted:
+   - 1920 × 1080 (Full HD Desktop)
+   - 1440 × 900  (Standard Desktop / Laptop)
+   - 1366 × 768  (Common Laptop)
+   - 1024 × 768  (Landscape Tablet)
+   - 768 × 1024  (Portrait Tablet)
+   - 480 × 800   (Standard Mobile)
+   - 390 × 844   (iPhone 12/13/14)
+   - 360 × 800   (Android Standard)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LARGE SCREENS (min-width: 1440px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1320px;
+  }
+
+  .hero-name {
+    font-size: 7rem;
+  }
+
+  .section {
+    padding: 140px 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   LAPTOPS (max-width: 1200px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .about-grid {
+    gap: 40px;
+    grid-template-columns: 320px 1fr;
+  }
+
+  .profile-img-wrapper {
+    width: 260px;
+    height: 260px;
+  }
+
+  .certs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TABLETS & MEDIUM DEVICES (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .section {
+    padding: 100px 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    text-align: center;
+  }
+
+  .about-image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-meta-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .about-cta-group {
+    justify-content: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .certs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-info-cards {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TABLET PORTRAIT & MOBILE (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 70px;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-size: 2.15rem;
+  }
+
+  /* Navigation Drawer */
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-cta-btn {
+    display: none;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(7, 10, 18, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px 32px 40px 32px;
+    gap: 24px;
+    z-index: 999;
+    transition: right var(--transition-normal);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  /* Hero Section Mobile */
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 0.94rem;
+    margin-bottom: 28px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  /* About Section */
+  .about-meta-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  /* Timeline adjustments */
+  .timeline {
+    padding-left: 28px;
+  }
+
+  .timeline-line {
+    left: 8px;
+  }
+
+  .timeline-dot {
+    left: -28px;
+    width: 20px;
+    height: 20px;
+    top: 24px;
+  }
+
+  .timeline-card {
+    padding: 24px 20px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .timeline-meta {
+    align-items: flex-start;
+  }
+
+  .achievement-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 20px 16px;
+  }
+
+  .achievement-number {
+    font-size: 2rem;
+  }
+
+  /* Contact section */
+  .contact-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-nav {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+
+  /* Mobile Three.js performance tuning */
+  #three-canvas {
+    opacity: 0.55;
+  }
+
+  /* Hide cursor follower on touch */
+  #cursor {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SMALL MOBILE PHONES (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding: 65px 0;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .profile-img-wrapper {
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+  }
+
+  .profile-img {
+    border-radius: 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .stat-card {
+    padding: 20px 16px;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card {
+    padding: 24px 18px;
+  }
+
+  .project-body {
+    padding: 22px 18px;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  .skill-category {
+    padding: 24px 18px;
+  }
+
+  .edu-card {
+    padding: 26px 20px;
+  }
+
+  .edu-degree {
+    font-size: 1.3rem;
+  }
+
+  .loading-bar {
+    width: 220px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TOUCH DEVICE OPTIMIZATION (HOVER DISABLE)
+   -------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover,
+  .project-card:hover,
+  .skill-category:hover,
+  .edu-card:hover,
+  .cert-card:hover,
+  .stat-card:hover,
+  .contact-btn:hover {
+    transform: none !important;
+  }
+
+  .nav-link,
+  .btn,
+  .contact-btn {
+    min-height: 48px;
+  }
+}
