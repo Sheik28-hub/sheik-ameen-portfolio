@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
 /**
- * SHEIK AMEEN PORTFOLIO — BESPOKE 3D HERO ENVIRONMENT
- * Premium Financial Technology & Analytics Architecture
+ * SHEIK AMEEN — 3D FINANCIAL ENVIRONMENT
+ * Pillar 2: Hero Globe, Metallic Objects, Multi-Layer Particles & Orbital Rings
  */
 
 export function initThreeScene() {
@@ -11,13 +11,10 @@ export function initThreeScene() {
 
   const isMobile = window.innerWidth < 768;
   const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
-  
-  // Node counts tuned for cinematic richness and performance
-  const particleCount = isMobile ? 700 : isTablet ? 1400 : 2500;
 
-  // Scene, Camera, Renderer
+  // Scene setup with exponential atmospheric fog
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x05070D, 0.018);
+  scene.fog = new THREE.FogExp2(0x05070D, 0.02);
 
   const camera = new THREE.PerspectiveCamera(
     55,
@@ -25,7 +22,7 @@ export function initThreeScene() {
     0.1,
     1000
   );
-  camera.position.set(0, 2, 30);
+  camera.position.set(0, 1.5, 32);
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -33,153 +30,224 @@ export function initThreeScene() {
     antialias: !isMobile,
     powerPreference: 'high-performance'
   });
-  
+
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 0);
 
   // -------------------------------------------------------------------------
-  // 1. FINANCIAL TERRAIN GRID / UNDULATING MARKET WAVE
+  // 1. LIGHTING FOR METALLIC REFLECTIONS
   // -------------------------------------------------------------------------
-  const gridWidth = 90;
-  const gridDepth = 70;
-  const gridSegments = isMobile ? 32 : 55;
-  const planeGeo = new THREE.PlaneGeometry(gridWidth, gridDepth, gridSegments, gridSegments);
-  planeGeo.rotateX(-Math.PI / 2);
-  planeGeo.translate(0, -12, -5);
+  const ambientLight = new THREE.AmbientLight(0x0F172A, 1.8);
+  scene.add(ambientLight);
 
-  const planeMat = new THREE.MeshBasicMaterial({
+  // Key Light (Luminescent Cyan)
+  const cyanKeyLight = new THREE.PointLight(0x00D4FF, 4.5, 120);
+  cyanKeyLight.position.set(18, 16, 20);
+  scene.add(cyanKeyLight);
+
+  // Fill Light (Royal Indigo)
+  const indigoFillLight = new THREE.PointLight(0x6366F1, 3.8, 100);
+  indigoFillLight.position.set(-20, -12, 16);
+  scene.add(indigoFillLight);
+
+  // Rim Light (Ice White Specular)
+  const rimLight = new THREE.DirectionalLight(0xE0F7FA, 1.5);
+  rimLight.position.set(0, 25, -15);
+  scene.add(rimLight);
+
+  // -------------------------------------------------------------------------
+  // 2. HERO GLOBAL FINANCIAL SPHERE (POINT CLOUD GLOBE)
+  // -------------------------------------------------------------------------
+  const globeGroup = new THREE.Group();
+  scene.add(globeGroup);
+
+  // Shift globe slightly to the right on desktop for perfect balance with hero typography
+  const globeOffsetX = isMobile ? 0 : 7.5;
+  const globeOffsetY = isMobile ? -2 : 0.5;
+  globeGroup.position.set(globeOffsetX, globeOffsetY, -2);
+
+  const globeRadius = isMobile ? 7.5 : 10.5;
+  const globeSegments = isMobile ? 24 : 40;
+
+  // Wireframe Core Globe
+  const globeCoreGeo = new THREE.SphereGeometry(globeRadius, globeSegments, globeSegments);
+  const globeCoreMat = new THREE.MeshBasicMaterial({
     color: 0x00D4FF,
     wireframe: true,
     transparent: true,
-    opacity: 0.08
+    opacity: 0.07
   });
+  const globeCoreMesh = new THREE.Mesh(globeCoreGeo, globeCoreMat);
+  globeGroup.add(globeCoreMesh);
 
-  const terrainMesh = new THREE.Mesh(planeGeo, planeMat);
-  scene.add(terrainMesh);
+  // Dot Matrix Surface Nodes (representing global capital nodes)
+  const nodeCount = isMobile ? 350 : 800;
+  const nodePositions = new Float32Array(nodeCount * 3);
+  const nodeColors = new Float32Array(nodeCount * 3);
 
-  const posAttr = planeGeo.attributes.position;
-  const initialY = new Float32Array(posAttr.count);
-  for (let i = 0; i < posAttr.count; i++) {
-    initialY[i] = posAttr.getY(i);
+  const colCyan = new THREE.Color(0x00D4FF);
+  const colIce = new THREE.Color(0xE0F7FA);
+  const colIndigo = new THREE.Color(0x6366F1);
+
+  for (let i = 0; i < nodeCount; i++) {
+    // Fibonacci sphere distribution for uniform financial node distribution
+    const phi = Math.acos(-1 + (2 * i) / nodeCount);
+    const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+
+    const r = globeRadius * (1 + (Math.random() * 0.04));
+    nodePositions[i * 3]     = r * Math.cos(theta) * Math.sin(phi);
+    nodePositions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
+    nodePositions[i * 3 + 2] = r * Math.cos(phi);
+
+    const pick = Math.random();
+    const c = pick > 0.6 ? colCyan : pick > 0.25 ? colIndigo : colIce;
+    nodeColors[i * 3]     = c.r;
+    nodeColors[i * 3 + 1] = c.g;
+    nodeColors[i * 3 + 2] = c.b;
   }
 
-  // -------------------------------------------------------------------------
-  // 2. PARTICLE SYSTEM (FINANCIAL DATA CLOUD)
-  // -------------------------------------------------------------------------
-  const positions = new Float32Array(particleCount * 3);
-  const colors = new Float32Array(particleCount * 3);
+  const globeNodesGeo = new THREE.BufferGeometry();
+  globeNodesGeo.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
+  globeNodesGeo.setAttribute('color', new THREE.BufferAttribute(nodeColors, 3));
 
-  const cyan = new THREE.Color(0x00D4FF);
-  const ice = new THREE.Color(0xE0F7FA);
-  const indigo = new THREE.Color(0x6366F1);
-
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3]     = (Math.random() - 0.5) * 85;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 65;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 55;
-
-    const rnd = Math.random();
-    const c = rnd > 0.65 ? cyan : rnd > 0.25 ? indigo : ice;
-    colors[i * 3]     = c.r;
-    colors[i * 3 + 1] = c.g;
-    colors[i * 3 + 2] = c.b;
-  }
-
-  const particleGeometry = new THREE.BufferGeometry();
-  particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-  const particleMaterial = new THREE.PointsMaterial({
-    size: isMobile ? 0.14 : 0.11,
+  const globeNodesMat = new THREE.PointsMaterial({
+    size: isMobile ? 0.2 : 0.16,
     vertexColors: true,
     transparent: true,
-    opacity: 0.75,
-    blending: THREE.AdditiveBlending,
-    sizeAttenuation: true
+    opacity: 0.85,
+    blending: THREE.AdditiveBlending
   });
 
-  const particles = new THREE.Points(particleGeometry, particleMaterial);
-  scene.add(particles);
+  const globeNodes = new THREE.Points(globeNodesGeo, globeNodesMat);
+  globeGroup.add(globeNodes);
 
   // -------------------------------------------------------------------------
-  // 3. CINEMATIC FLOATING GEOMETRIES
+  // 3. CONCENTRIC ORBITAL RINGS
   // -------------------------------------------------------------------------
-  const shapes = [];
+  const ringGroup = new THREE.Group();
+  globeGroup.add(ringGroup);
+
+  function createOrbitalRing(radius, tubeRadius, color, rotX, rotY, opacity) {
+    const ringGeo = new THREE.TorusGeometry(radius, tubeRadius, 6, 80);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity,
+      wireframe: true
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = rotX;
+    ring.rotation.y = rotY;
+    return ring;
+  }
+
+  const ring1 = createOrbitalRing(globeRadius * 1.35, 0.04, 0x00D4FF, Math.PI / 3, Math.PI / 6, 0.35);
+  const ring2 = createOrbitalRing(globeRadius * 1.55, 0.03, 0x6366F1, -Math.PI / 4, Math.PI / 4, 0.25);
+  const ring3 = createOrbitalRing(globeRadius * 1.75, 0.02, 0xE0F7FA, Math.PI / 2.2, 0, 0.18);
+
+  ringGroup.add(ring1);
+  ringGroup.add(ring2);
+  ringGroup.add(ring3);
+
+  // -------------------------------------------------------------------------
+  // 4. FLOATING METALLIC PBR OBJECTS (HIGH-SPECULAR FINTECH ARTIFACTS)
+  // -------------------------------------------------------------------------
+  const metallicObjects = [];
+
   if (!isMobile) {
-    const geoConfigs = [
-      {
-        geo: new THREE.IcosahedronGeometry(3.6, 0),
-        pos: [16, 7, -10],
-        rot: [0.003, 0.004, 0.002],
-        color: 0x00D4FF,
-        opacity: 0.24
-      },
-      {
-        geo: new THREE.OctahedronGeometry(2.8, 0),
-        pos: [-17, -4, -8],
-        rot: [0.004, 0.003, 0.005],
-        color: 0x6366F1,
-        opacity: 0.22
-      },
-      {
-        geo: new THREE.TorusGeometry(3.6, 0.35, 10, 28),
-        pos: [18, -9, -15],
-        rot: [0.002, 0.005, 0.001],
-        color: 0x00D4FF,
-        opacity: 0.18
-      },
-      {
-        geo: new THREE.TorusGeometry(2.4, 0.28, 8, 22),
-        pos: [-14, 11, -12],
-        rot: [0.004, 0.002, 0.004],
-        color: 0x6366F1,
-        opacity: 0.20
-      },
-      {
-        geo: new THREE.BoxGeometry(2.8, 2.8, 2.8),
-        pos: [3, 14, -18],
-        rot: [0.002, 0.004, 0.003],
-        color: 0x00D4FF,
-        opacity: 0.16
-      }
+    // Metallic Shader Material with physical sheen
+    const platinumMat = new THREE.MeshStandardMaterial({
+      color: 0x1E293B,
+      metalness: 0.95,
+      roughness: 0.18,
+      wireframe: false
+    });
+
+    const cyanChromeMat = new THREE.MeshStandardMaterial({
+      color: 0x075985,
+      emissive: 0x00D4FF,
+      emissiveIntensity: 0.15,
+      metalness: 0.9,
+      roughness: 0.22,
+      wireframe: false
+    });
+
+    const indigoChromeMat = new THREE.MeshStandardMaterial({
+      color: 0x312E81,
+      emissive: 0x6366F1,
+      emissiveIntensity: 0.2,
+      metalness: 0.88,
+      roughness: 0.25
+    });
+
+    const metallicConfigs = [
+      { geo: new THREE.OctahedronGeometry(2.4, 0), mat: platinumMat, pos: [-16, 8, -6], rot: [0.005, 0.007, 0.003] },
+      { geo: new THREE.IcosahedronGeometry(2.2, 0), mat: cyanChromeMat, pos: [19, -8, -8], rot: [0.004, 0.005, 0.006] },
+      { geo: new THREE.TorusGeometry(2.8, 0.4, 12, 32), mat: indigoChromeMat, pos: [-14, -9, -10], rot: [0.003, 0.004, 0.002] },
+      { geo: new THREE.BoxGeometry(2.2, 2.2, 2.2), mat: platinumMat, pos: [17, 11, -12], rot: [0.004, 0.003, 0.005] }
     ];
 
-    geoConfigs.forEach((cfg) => {
-      const mat = new THREE.MeshBasicMaterial({
-        color: cfg.color,
-        wireframe: true,
-        transparent: true,
-        opacity: cfg.opacity
-      });
-      const mesh = new THREE.Mesh(cfg.geo, mat);
+    metallicConfigs.forEach((cfg) => {
+      const mesh = new THREE.Mesh(cfg.geo, cfg.mat);
       mesh.position.set(...cfg.pos);
       mesh.userData = {
         rotSpeed: cfg.rot,
         baseY: cfg.pos[1],
         baseX: cfg.pos[0]
       };
+
+      // Add a fine wireframe accent overlay on each metallic object
+      const wireMat = new THREE.MeshBasicMaterial({
+        color: 0x00D4FF,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.2
+      });
+      const wireOverlay = new THREE.Mesh(cfg.geo, wireMat);
+      mesh.add(wireOverlay);
+
       scene.add(mesh);
-      shapes.push(mesh);
+      metallicObjects.push(mesh);
     });
   }
 
   // -------------------------------------------------------------------------
-  // 4. ATMOSPHERIC LIGHTING
+  // 5. MULTI-LAYER AMBIENT PARTICLE FIELD
   // -------------------------------------------------------------------------
-  const ambientLight = new THREE.AmbientLight(0x05070D, 1.5);
-  scene.add(ambientLight);
+  const bgParticleCount = isMobile ? 400 : 1200;
+  const bgPositions = new Float32Array(bgParticleCount * 3);
+  const bgColors = new Float32Array(bgParticleCount * 3);
 
-  const cyanLight = new THREE.PointLight(0x00D4FF, 3.2, 100);
-  cyanLight.position.set(15, 15, 15);
-  scene.add(cyanLight);
+  for (let i = 0; i < bgParticleCount; i++) {
+    bgPositions[i * 3]     = (Math.random() - 0.5) * 110;
+    bgPositions[i * 3 + 1] = (Math.random() - 0.5) * 80;
+    bgPositions[i * 3 + 2] = (Math.random() - 0.5) * 60;
 
-  const indigoLight = new THREE.PointLight(0x6366F1, 2.5, 90);
-  indigoLight.position.set(-15, -12, 10);
-  scene.add(indigoLight);
+    const r = Math.random();
+    const c = r > 0.7 ? colCyan : r > 0.3 ? colIndigo : colIce;
+    bgColors[i * 3]     = c.r;
+    bgColors[i * 3 + 1] = c.g;
+    bgColors[i * 3 + 2] = c.b;
+  }
+
+  const bgParticleGeo = new THREE.BufferGeometry();
+  bgParticleGeo.setAttribute('position', new THREE.BufferAttribute(bgPositions, 3));
+  bgParticleGeo.setAttribute('color', new THREE.BufferAttribute(bgColors, 3));
+
+  const bgParticleMat = new THREE.PointsMaterial({
+    size: 0.09,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.6,
+    blending: THREE.AdditiveBlending
+  });
+
+  const bgParticles = new THREE.Points(bgParticleGeo, bgParticleMat);
+  scene.add(bgParticles);
 
   // -------------------------------------------------------------------------
-  // 5. ANIMATION LOOP WITH UNDULATING WAVE & PARALLAX
+  // 6. ANIMATION LOOP & MOUSE TRACKING
   // -------------------------------------------------------------------------
   let targetMouseX = 0;
   let targetMouseY = 0;
@@ -193,38 +261,36 @@ export function initThreeScene() {
     animationFrameId = requestAnimationFrame(animate);
     const elapsed = clock.getElapsedTime();
 
-    // Smooth Lerp Mouse values
+    // Lerp smooth mouse values
     currentMouseX += (targetMouseX - currentMouseX) * 0.045;
     currentMouseY += (targetMouseY - currentMouseY) * 0.045;
 
-    // 1. Undulate the Market Terrain Wave
-    const positions = posAttr.array;
-    for (let i = 0; i < posAttr.count; i++) {
-      const u = (i % (gridSegments + 1)) / gridSegments;
-      const v = Math.floor(i / (gridSegments + 1)) / gridSegments;
-      const wave = Math.sin(u * 7 + elapsed * 1.2) * Math.cos(v * 6 + elapsed * 0.9) * 2.2;
-      positions[i * 3 + 1] = initialY[i] + wave;
-    }
-    posAttr.needsUpdate = true;
+    // Rotate Globe
+    globeGroup.rotation.y = elapsed * 0.06 + currentMouseX * 0.15;
+    globeGroup.rotation.x = currentMouseY * 0.1;
 
-    // 2. Rotate Data Cloud
-    particles.rotation.y = elapsed * 0.025 + currentMouseX * 0.12;
-    particles.rotation.x = elapsed * 0.01 + currentMouseY * 0.08;
+    // Counter-rotate Orbital Rings
+    ring1.rotation.z = elapsed * 0.12;
+    ring2.rotation.z = -elapsed * 0.09;
+    ring3.rotation.z = elapsed * 0.07;
 
-    // 3. Float Wireframe Shapes
-    shapes.forEach((shape, idx) => {
-      const rs = shape.userData.rotSpeed;
-      shape.rotation.x += rs[0];
-      shape.rotation.y += rs[1];
-      shape.rotation.z += rs[2];
+    // Animate Metallic Objects
+    metallicObjects.forEach((obj, idx) => {
+      const rs = obj.userData.rotSpeed;
+      obj.rotation.x += rs[0];
+      obj.rotation.y += rs[1];
+      obj.rotation.z += rs[2];
 
-      shape.position.y = shape.userData.baseY + Math.sin(elapsed * 0.7 + idx * 1.4) * 1.8;
-      shape.position.x = shape.userData.baseX + Math.cos(elapsed * 0.5 + idx) * 0.9;
+      obj.position.y = obj.userData.baseY + Math.sin(elapsed * 0.8 + idx * 1.5) * 1.8;
+      obj.position.x = obj.userData.baseX + Math.cos(elapsed * 0.5 + idx) * 0.9;
     });
 
-    // 4. Subtle Dynamic Camera Tilt
-    camera.position.x += (currentMouseX * 2.8 - camera.position.x) * 0.035;
-    camera.position.y += (2 - currentMouseY * 2.0 - camera.position.y) * 0.035;
+    // Slow ambient drift of background particles
+    bgParticles.rotation.y = elapsed * 0.012 + currentMouseX * 0.04;
+
+    // Camera micro-movement
+    camera.position.x += (currentMouseX * 2.2 - camera.position.x) * 0.03;
+    camera.position.y += (1.5 - currentMouseY * 1.8 - camera.position.y) * 0.03;
     camera.lookAt(0, 0, 0);
 
     renderer.render(scene, camera);
@@ -233,7 +299,7 @@ export function initThreeScene() {
   animate();
 
   // -------------------------------------------------------------------------
-  // 6. RESIZE LISTENER & CLEANUP
+  // 7. RESIZE & TEARDOWN
   // -------------------------------------------------------------------------
   function handleResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -247,13 +313,15 @@ export function initThreeScene() {
   function destroy() {
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
     window.removeEventListener('resize', handleResize);
-    planeGeo.dispose();
-    planeMat.dispose();
-    particleGeometry.dispose();
-    particleMaterial.dispose();
-    shapes.forEach((s) => {
-      s.geometry.dispose();
-      s.material.dispose();
+    globeCoreGeo.dispose();
+    globeCoreMat.dispose();
+    globeNodesGeo.dispose();
+    globeNodesMat.dispose();
+    bgParticleGeo.dispose();
+    bgParticleMat.dispose();
+    metallicObjects.forEach((m) => {
+      m.geometry.dispose();
+      m.material.dispose();
     });
     renderer.dispose();
   }

@@ -1,7 +1,7 @@
 /* ==========================================================================
    SHEIK AMEEN — ULTRA-PREMIUM 3D PORTFOLIO DESIGN SYSTEM
    Professional Identity: Finance × Analytics
-   Aesthetic: Dark Futuristic · Bespoke Fintech · Cinematic Depth
+   Pillars: Visual Foundation · 3D Environment · Financial Visualizations
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -99,7 +99,7 @@ body::before {
   height: 60vw;
   max-width: 800px;
   max-height: 800px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.07) 0%, rgba(99, 102, 241, 0.04) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, rgba(99, 102, 241, 0.04) 40%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   filter: blur(80px);
@@ -114,7 +114,7 @@ body::after {
   height: 50vw;
   max-width: 700px;
   max-height: 700px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(0, 212, 255, 0.03) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, rgba(0, 212, 255, 0.03) 45%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   filter: blur(90px);
@@ -162,6 +162,68 @@ button {
   background: none;
   cursor: pointer;
   outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   FINANCIAL TICKER TAPE RIBBON (PILLAR 1 & 4)
+   -------------------------------------------------------------------------- */
+.ticker-tape-container {
+  width: 100%;
+  background: rgba(8, 12, 22, 0.88);
+  border-bottom: 1px solid rgba(38, 52, 73, 0.5);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  position: relative;
+  z-index: 99;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  margin-top: var(--nav-height);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 40s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.ticker-symbol {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.ticker-up {
+  color: var(--accent-emerald);
+  font-weight: 600;
+}
+
+.ticker-accent {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.ticker-dot {
+  color: var(--border);
 }
 
 /* --------------------------------------------------------------------------
@@ -638,12 +700,12 @@ button {
    -------------------------------------------------------------------------- */
 #hero {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - 38px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: var(--nav-height);
+  padding-top: 40px;
 }
 
 #three-canvas {
@@ -659,10 +721,15 @@ button {
 .hero-content {
   position: relative;
   z-index: 10;
-  text-align: center;
-  max-width: 1000px;
-  padding: 50px 24px;
+  text-align: left;
+  max-width: 1200px;
+  padding: 60px 28px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.hero-text-block {
+  max-width: 680px;
 }
 
 .hero-live-pill {
@@ -670,7 +737,7 @@ button {
   align-items: center;
   gap: 10px;
   padding: 7px 18px;
-  background: rgba(18, 27, 43, 0.7);
+  background: rgba(18, 27, 43, 0.75);
   border: 1px solid rgba(0, 212, 255, 0.35);
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
@@ -701,13 +768,13 @@ button {
 
 .hero-name {
   font-family: var(--font-heading);
-  font-size: clamp(3.4rem, 8.5vw, 7.2rem);
+  font-size: clamp(3.4rem, 8.5vw, 6.8rem);
   font-weight: 800;
   letter-spacing: 0.08em;
   line-height: 1.02;
   margin-bottom: 22px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 0.02em;
 }
@@ -739,7 +806,7 @@ button {
 
 .hero-tagline {
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.6vw, 1.95rem);
+  font-size: clamp(1.25rem, 2.6vw, 1.85rem);
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 16px;
@@ -750,10 +817,10 @@ button {
 }
 
 .hero-description {
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  max-width: 720px;
-  margin: 0 auto 38px auto;
+  max-width: 620px;
+  margin-bottom: 38px;
   line-height: 1.75;
   opacity: 0;
   transform: translateY(20px);
@@ -763,7 +830,7 @@ button {
 .hero-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 18px;
   flex-wrap: wrap;
   opacity: 0;
@@ -781,7 +848,7 @@ button {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 30px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1322,13 +1389,13 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   INTERACTIVE LIVE FINANCIAL CALCULATOR / SIMULATOR CARD
+   PILLAR 4: FINANCIAL VISUALIZATIONS & LIVE VALUATION TERMINAL
    -------------------------------------------------------------------------- */
 .interactive-calc-wrapper {
   margin-top: 50px;
-  padding: 36px;
-  background: linear-gradient(135deg, rgba(13, 20, 36, 0.85) 0%, rgba(10, 16, 29, 0.95) 100%);
-  border: 1.5px solid rgba(0, 212, 255, 0.35);
+  padding: 38px;
+  background: linear-gradient(135deg, rgba(13, 20, 36, 0.9) 0%, rgba(10, 16, 29, 0.98) 100%);
+  border: 1.5px solid rgba(0, 212, 255, 0.4);
   border-radius: var(--radius-lg);
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 212, 255, 0.15);
 }
@@ -1337,19 +1404,48 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
 }
 
 .calc-title {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
   color: var(--text-primary);
+}
+
+/* Scenario Switcher Buttons */
+.scenario-btn-group {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.scenario-btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(18, 27, 43, 0.8);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.scenario-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.scenario-btn.active {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--accent-primary);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
 }
 
 .calc-grid {
@@ -1397,10 +1493,10 @@ button {
 }
 
 .calc-output-card {
-  background: rgba(5, 7, 13, 0.8);
+  background: rgba(5, 7, 13, 0.85);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 28px 24px;
   text-align: center;
 }
 
@@ -1415,7 +1511,7 @@ button {
 
 .calc-output-number {
   font-family: var(--font-mono);
-  font-size: 2.8rem;
+  font-size: 2.85rem;
   font-weight: 800;
   color: var(--accent-primary);
   line-height: 1;
@@ -1424,9 +1520,83 @@ button {
 }
 
 .calc-output-status {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--accent-emerald);
   font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   PILLAR 4: CREDIT RISK ANALYTICS HEATMAP / MATRIX
+   -------------------------------------------------------------------------- */
+.risk-matrix-wrapper {
+  margin-top: 36px;
+  padding: 30px;
+  background: rgba(10, 15, 29, 0.75);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.risk-matrix-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.risk-matrix-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.risk-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+}
+
+.risk-matrix-table th {
+  text-align: left;
+  padding: 10px 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+.risk-matrix-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(38, 52, 73, 0.35);
+  color: var(--text-secondary);
+}
+
+.risk-tier-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.tier-low {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.tier-med {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.tier-high {
+  background: rgba(244, 63, 94, 0.15);
+  color: #F43F5E;
+  border: 1px solid rgba(244, 63, 94, 0.4);
 }
 
 /* --------------------------------------------------------------------------

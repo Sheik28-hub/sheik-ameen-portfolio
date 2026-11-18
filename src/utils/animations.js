@@ -1,5 +1,6 @@
 /**
- * SHEIK AMEEN PORTFOLIO — PREMIUM ANIMATION & INTERACTION UTILITIES
+ * SHEIK AMEEN PORTFOLIO — PREMIUM ANIMATION & FINANCIAL INTERACTION UTILITIES
+ * Pillars: Interactive Experience & Financial Visualizations
  */
 
 export const isMobile = window.innerWidth < 768;
@@ -148,7 +149,7 @@ export function initCustomCursor() {
     cursor.style.top = `${mouseY}px`;
   });
 
-  const interactives = document.querySelectorAll('a, button, .project-card, .skill-category, .cert-card, .stat-card, .timeline-card, .calc-slider');
+  const interactives = document.querySelectorAll('a, button, .project-card, .skill-category, .cert-card, .stat-card, .timeline-card, .calc-slider, .scenario-btn');
   interactives.forEach((el) => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
@@ -156,7 +157,7 @@ export function initCustomCursor() {
 }
 
 /**
- * Interactive Live DCF & Financial Valuation Calculator
+ * Interactive Live DCF & Financial Valuation Calculator with Scenario Switcher
  */
 export function initFinancialCalculator() {
   const waccSlider = document.getElementById('calc-wacc');
@@ -169,35 +170,32 @@ export function initFinancialCalculator() {
   const outputEl = document.getElementById('calc-implied-equity');
   const statusEl = document.getElementById('calc-verdict');
 
+  const scenarioBtns = document.querySelectorAll('.scenario-btn');
+
   if (!waccSlider || !growthSlider || !revenueSlider || !outputEl) return;
 
   function calculateValuation() {
-    const wacc = parseFloat(waccSlider.value); // e.g. 10.5%
-    const g = parseFloat(growthSlider.value);   // e.g. 3.0%
-    const rev = parseFloat(revenueSlider.value); // e.g. 1500 Cr
+    const wacc = parseFloat(waccSlider.value);
+    const g = parseFloat(growthSlider.value);
+    const rev = parseFloat(revenueSlider.value);
 
     if (waccVal) waccVal.textContent = `${wacc.toFixed(1)}%`;
     if (growthVal) growthVal.textContent = `${g.toFixed(1)}%`;
     if (revenueVal) revenueVal.textContent = `₹${rev.toLocaleString('en-IN')} Cr`;
 
-    // Financial DCF Formula Approximation
-    // Enterprise Value = (Normalized Free Cash Flow) / (WACC - g)
-    // Assume 18% Free Cash Flow margin on Revenue
+    // Normalized Free Cash Flow (18% margin on revenue)
     const fcf = rev * 0.18;
     const discountRate = (wacc - g) / 100;
     
-    // Prevent division by zero or negative
     const impliedEv = discountRate > 0.01 ? (fcf * (1 + g / 100)) / discountRate : 2500;
-    
-    // Implied Equity Value in Crores
     const impliedEquity = Math.round(impliedEv);
     outputEl.textContent = `₹${impliedEquity.toLocaleString('en-IN')} Cr`;
 
     if (statusEl) {
-      if (impliedEquity > 3000) {
+      if (impliedEquity >= 4500) {
         statusEl.textContent = '● Premium Valuation · Strong Growth Upside';
         statusEl.style.color = '#10B981';
-      } else if (impliedEquity >= 2000) {
+      } else if (impliedEquity >= 2200) {
         statusEl.textContent = '● Fair Value · Stable Operating Cash Flow';
         statusEl.style.color = '#00D4FF';
       } else {
@@ -207,9 +205,42 @@ export function initFinancialCalculator() {
     }
   }
 
-  waccSlider.addEventListener('input', calculateValuation);
-  growthSlider.addEventListener('input', calculateValuation);
-  revenueSlider.addEventListener('input', calculateValuation);
+  // Sliders input listener
+  waccSlider.addEventListener('input', () => {
+    scenarioBtns.forEach(btn => btn.classList.remove('active'));
+    calculateValuation();
+  });
+  growthSlider.addEventListener('input', () => {
+    scenarioBtns.forEach(btn => btn.classList.remove('active'));
+    calculateValuation();
+  });
+  revenueSlider.addEventListener('input', () => {
+    scenarioBtns.forEach(btn => btn.classList.remove('active'));
+    calculateValuation();
+  });
+
+  // Scenario Buttons (Base, Bull, Bear)
+  const scenarios = {
+    base: { wacc: 10.5, g: 3.0, rev: 1500 },
+    bull: { wacc: 9.2, g: 4.2, rev: 2200 },
+    bear: { wacc: 13.0, g: 2.0, rev: 1100 }
+  };
+
+  scenarioBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      scenarioBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const scKey = btn.getAttribute('data-scenario');
+      const sc = scenarios[scKey];
+      if (sc) {
+        waccSlider.value = sc.wacc;
+        growthSlider.value = sc.g;
+        revenueSlider.value = sc.rev;
+        calculateValuation();
+      }
+    });
+  });
 
   calculateValuation(); // Initial calculation
 }
@@ -231,7 +262,7 @@ export function hideLoadingScreen(onComplete) {
   const steps = [
     { text: 'INITIALIZING AMEEN.EXE', status: 'Calibrating financial modeling engine...', progress: 28 },
     { text: 'SYNCHRONIZING PORTFOLIO', status: 'Mounting verified risk & valuation datasets...', progress: 60 },
-    { text: 'COMPUTING 3D ENVIRONMENT', status: 'Rendering Three.js market terrain...', progress: 88 },
+    { text: 'COMPUTING 3D ENVIRONMENT', status: 'Rendering Three.js market globe & orbital rings...', progress: 88 },
     { text: 'SYSTEM READY', status: 'Welcome to the portfolio.', progress: 100 }
   ];
 
@@ -253,7 +284,7 @@ export function hideLoadingScreen(onComplete) {
         }, 800);
       }, 350);
     }
-  }, 420);
+  }, 400);
 
   if (barFill) barFill.style.width = '20%';
 }
