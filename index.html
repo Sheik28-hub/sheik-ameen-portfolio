@@ -98,6 +98,8 @@
     <!-- LIVE FINANCIAL & ANALYTICS TICKER TAPE RIBBON -->
     <div class="ticker-tape-container" aria-label="Financial telemetry feed">
       <div class="ticker-track">
+        <div class="ticker-item"><span class="ticker-symbol">GLOBAL DESK</span>: <span class="market-clock-telemetry">LIVE IST TELEMETRY</span></div>
+        <div class="ticker-item"><span class="ticker-dot">•</span></div>
         <div class="ticker-item"><span class="ticker-symbol">KFIN OPS</span>: <span class="ticker-up">35,000+ AUDITED</span></div>
         <div class="ticker-item"><span class="ticker-dot">•</span></div>
         <div class="ticker-item"><span class="ticker-symbol">CREDIT RISK</span>: <span class="ticker-accent">+18% DEFAULT PREDICTION</span></div>
@@ -111,6 +113,8 @@
         <div class="ticker-item"><span class="ticker-symbol">NPS / SURVEILLANCE</span>: <span class="ticker-accent">ZERO REGULATORY BREACHES</span></div>
         <div class="ticker-item"><span class="ticker-dot">•</span></div>
         <!-- Duplicate for continuous loop -->
+        <div class="ticker-item"><span class="ticker-symbol">GLOBAL DESK</span>: <span class="market-clock-telemetry">LIVE IST TELEMETRY</span></div>
+        <div class="ticker-item"><span class="ticker-dot">•</span></div>
         <div class="ticker-item"><span class="ticker-symbol">KFIN OPS</span>: <span class="ticker-up">35,000+ AUDITED</span></div>
         <div class="ticker-item"><span class="ticker-dot">•</span></div>
         <div class="ticker-item"><span class="ticker-symbol">CREDIT RISK</span>: <span class="ticker-accent">+18% DEFAULT PREDICTION</span></div>
@@ -361,9 +365,17 @@
           <p class="section-subtitle">Real-world analytics applications spanning credit risk, financial modelling, M&amp;A valuation, and enterprise BI.</p>
         </div>
 
+        <!-- Interactive Project Filter Controls -->
+        <div class="project-filter-toolbar reveal">
+          <button type="button" class="project-filter-btn active" data-filter="all">All Engagements</button>
+          <button type="button" class="project-filter-btn" data-filter="risk">Credit Risk &amp; BFS</button>
+          <button type="button" class="project-filter-btn" data-filter="finance">Corporate Finance &amp; DCF</button>
+          <button type="button" class="project-filter-btn" data-filter="analytics">BI &amp; Forensics</button>
+        </div>
+
         <div class="projects-grid">
           <!-- Project 01: Shriram Finance -->
-          <div class="project-card spotlight-card reveal delay-1">
+          <div class="project-card border-beam-card spotlight-card reveal delay-1" data-category="risk">
             <div class="project-visual">
               <img src="./assets/projects/credit-risk.svg" alt="Predictive Analytics for Loan Default Risk" />
               <span class="project-badge-top">CREDIT RISK · BFS DOMAIN</span>
@@ -389,7 +401,7 @@
           </div>
 
           <!-- Project 02: Integrated Financial Modelling -->
-          <div class="project-card spotlight-card reveal delay-2">
+          <div class="project-card spotlight-card reveal delay-2" data-category="finance">
             <div class="project-visual">
               <img src="./assets/projects/financial-model.svg" alt="Integrated Financial Modelling" />
               <span class="project-badge-top">CORPORATE FINANCE · MODELING</span>
@@ -415,7 +427,7 @@
           </div>
 
           <!-- Project 03: JPMorgan Chase Simulation -->
-          <div class="project-card spotlight-card reveal delay-3">
+          <div class="project-card spotlight-card reveal delay-3" data-category="finance">
             <div class="project-visual">
               <img src="./assets/projects/dcf-valuation.svg" alt="DCF Valuation and M&A Analysis" />
               <span class="project-badge-top">INVESTMENT BANKING SIMULATION</span>
@@ -442,7 +454,7 @@
           </div>
 
           <!-- Project 04: Deloitte Australia Simulation -->
-          <div class="project-card spotlight-card reveal delay-4">
+          <div class="project-card spotlight-card reveal delay-4" data-category="analytics">
             <div class="project-visual">
               <img src="./assets/projects/powerbi-dashboard.svg" alt="Business Intelligence and Data Analytics" />
               <span class="project-badge-top">FORENSIC &amp; BI SIMULATION</span>
@@ -470,7 +482,7 @@
         </div>
 
         <!-- PILLAR 4: INTERACTIVE FINANCIAL VALUATION & RISK TERMINAL WIDGET WITH SCENARIOS -->
-        <div class="interactive-calc-wrapper spotlight-card reveal">
+        <div class="interactive-calc-wrapper border-beam-card spotlight-card reveal">
           <div class="calc-header">
             <div>
               <span class="section-label" style="margin-bottom: 8px;">INTERACTIVE VALUATION ENGINE</span>
@@ -515,7 +527,40 @@
               <div class="calc-output-label">IMPLIED ENTERPRISE EQUITY VALUE</div>
               <div id="calc-implied-equity" class="calc-output-number">₹3,708 Cr</div>
               <div id="calc-verdict" class="calc-output-status">● Fair Value · Stable Operating Cash Flow</div>
-              <p style="font-size: 0.76rem; color: #64748B; margin-top: 10px; font-family: var(--font-mono);">Gordon Growth Model &amp; FCF Margin Sensitivity</p>
+
+              <!-- 5-Year Forward Cash Flow Forecast Bars -->
+              <div class="fcf-bars-container">
+                <div class="fcf-bars-header">5-YEAR CASH FLOW FORECAST (₹ CR)</div>
+                <div class="fcf-bars-track">
+                  <div class="fcf-bar-col">
+                    <div class="fcf-bar-fill" id="fcf-bar-1" style="height: 48%;"></div>
+                    <span class="fcf-bar-val" id="fcf-val-1">270</span>
+                    <span class="fcf-bar-lbl">Y1</span>
+                  </div>
+                  <div class="fcf-bar-col">
+                    <div class="fcf-bar-fill" id="fcf-bar-2" style="height: 55%;"></div>
+                    <span class="fcf-bar-val" id="fcf-val-2">278</span>
+                    <span class="fcf-bar-lbl">Y2</span>
+                  </div>
+                  <div class="fcf-bar-col">
+                    <div class="fcf-bar-fill" id="fcf-bar-3" style="height: 63%;"></div>
+                    <span class="fcf-bar-val" id="fcf-val-3">286</span>
+                    <span class="fcf-bar-lbl">Y3</span>
+                  </div>
+                  <div class="fcf-bar-col">
+                    <div class="fcf-bar-fill" id="fcf-bar-4" style="height: 71%;"></div>
+                    <span class="fcf-bar-val" id="fcf-val-4">295</span>
+                    <span class="fcf-bar-lbl">Y4</span>
+                  </div>
+                  <div class="fcf-bar-col">
+                    <div class="fcf-bar-fill" id="fcf-bar-5" style="height: 80%;"></div>
+                    <span class="fcf-bar-val" id="fcf-val-5">304</span>
+                    <span class="fcf-bar-lbl">Y5</span>
+                  </div>
+                </div>
+              </div>
+
+              <p style="font-size: 0.74rem; color: #64748B; margin-top: 10px; font-family: var(--font-mono);">Gordon Growth Model &amp; FCF Margin Sensitivity</p>
             </div>
           </div>
         </div>
@@ -580,9 +625,26 @@
           <p class="section-subtitle">Structured competencies spanning quantitative finance, risk analytics, and modern business intelligence tools.</p>
         </div>
 
+        <!-- Interactive Skills Search & Category Filter Controls -->
+        <div class="skills-filter-container reveal">
+          <div class="skills-search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="skill-search-input" placeholder="Search competencies (e.g. DCF, SQL, Power BI, Python, Risk, Surveillance)..." aria-label="Search skills" autocomplete="off" />
+            <button type="button" id="skill-search-clear" class="search-clear-btn" aria-label="Clear search">×</button>
+          </div>
+          <div class="skills-category-tabs">
+            <button type="button" class="skill-tab-btn active" data-skill-tab="all">All Domains</button>
+            <button type="button" class="skill-tab-btn" data-skill-tab="finance">Corporate Finance</button>
+            <button type="button" class="skill-tab-btn" data-skill-tab="risk">Risk &amp; Surveillance</button>
+            <button type="button" class="skill-tab-btn" data-skill-tab="analytics">Data Analytics</button>
+            <button type="button" class="skill-tab-btn" data-skill-tab="bi">BI &amp; MIS</button>
+          </div>
+          <div id="skills-search-status" class="skills-search-status" aria-live="polite"></div>
+        </div>
+
         <div class="skills-grid">
           <!-- 01. Finance & Corporate Finance -->
-          <div class="skill-category spotlight-card reveal delay-1">
+          <div class="skill-category spotlight-card reveal delay-1" data-category="finance">
             <div class="category-header">
               <span class="category-num">01</span>
               <h3 class="category-title">Finance &amp; Corporate Finance</h3>
@@ -600,7 +662,7 @@
           </div>
 
           <!-- 02. Investment & Risk -->
-          <div class="skill-category spotlight-card reveal delay-2">
+          <div class="skill-category spotlight-card reveal delay-2" data-category="risk">
             <div class="category-header">
               <span class="category-num">02</span>
               <h3 class="category-title">Investment &amp; Risk</h3>
@@ -618,7 +680,7 @@
           </div>
 
           <!-- 03. Data Analytics -->
-          <div class="skill-category spotlight-card reveal delay-3">
+          <div class="skill-category spotlight-card reveal delay-3" data-category="analytics">
             <div class="category-header">
               <span class="category-num">03</span>
               <h3 class="category-title">Data Analytics &amp; Programming</h3>
@@ -636,7 +698,7 @@
           </div>
 
           <!-- 04. Business Intelligence -->
-          <div class="skill-category spotlight-card reveal delay-4">
+          <div class="skill-category spotlight-card reveal delay-4" data-category="bi">
             <div class="category-header">
               <span class="category-num">04</span>
               <h3 class="category-title">Business Intelligence &amp; MIS</h3>

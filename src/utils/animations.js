@@ -191,6 +191,28 @@ export function initFinancialCalculator() {
     const impliedEquity = Math.round(impliedEv);
     outputEl.textContent = `₹${impliedEquity.toLocaleString('en-IN')} Cr`;
 
+    // 5-Year Forward Cash Flow Projections
+    const y1 = Math.round(fcf);
+    const y2 = Math.round(y1 * (1 + g / 100));
+    const y3 = Math.round(y2 * (1 + g / 100));
+    const y4 = Math.round(y3 * (1 + g / 100));
+    const y5 = Math.round(y4 * (1 + g / 100));
+
+    const fcfVals = [y1, y2, y3, y4, y5];
+    const maxVal = Math.max(...fcfVals, 350);
+
+    for (let yr = 1; yr <= 5; yr++) {
+      const barFill = document.getElementById(`fcf-bar-${yr}`);
+      const valEl = document.getElementById(`fcf-val-${yr}`);
+      if (barFill) {
+        const pct = Math.min(95, Math.max(25, (fcfVals[yr - 1] / maxVal) * 88));
+        barFill.style.height = `${pct.toFixed(0)}%`;
+      }
+      if (valEl) {
+        valEl.textContent = fcfVals[yr - 1];
+      }
+    }
+
     if (statusEl) {
       if (impliedEquity >= 4500) {
         statusEl.textContent = '● Premium Valuation · Strong Growth Upside';
@@ -314,4 +336,39 @@ export function initMagneticButtons() {
       btn.style.transition = 'transform 0.1s ease';
     });
   });
+}
+
+/**
+ * 11. Live Global Financial Telemetry Clock
+ * Displays real-time IST time and live BSE/NSE trading market status
+ */
+export function initMarketClock() {
+  const telemetryEls = document.querySelectorAll('.market-clock-telemetry');
+  if (!telemetryEls.length) return;
+
+  function updateClock() {
+    const now = new Date();
+    // IST = UTC + 5:30
+    const istTotalMin = now.getUTCHours() * 60 + now.getUTCMinutes() + 330;
+    const istHours = Math.floor(istTotalMin / 60) % 24;
+    const istMinutes = istTotalMin % 60;
+    const istSeconds = now.getUTCSeconds();
+
+    const timeStr = `${String(istHours).padStart(2, '0')}:${String(istMinutes).padStart(2, '0')}:${String(istSeconds).padStart(2, '0')} IST`;
+
+    // NSE Trading Session: 09:15 - 15:30 IST on Mon-Fri
+    const day = now.getUTCDay();
+    const isWeekday = day >= 1 && day <= 5;
+    const istDecimal = istHours + istMinutes / 60;
+    const isNSEOpen = isWeekday && istDecimal >= 9.25 && istDecimal <= 15.5;
+
+    const htmlContent = `<span class="market-time">${timeStr}</span> · <span class="${isNSEOpen ? 'market-open' : 'market-closed'}">${isNSEOpen ? '● NSE OPEN' : '○ NSE CLOSED'}</span>`;
+
+    telemetryEls.forEach((el) => {
+      el.innerHTML = htmlContent;
+    });
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
 }

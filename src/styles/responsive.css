@@ -256,6 +256,58 @@
     grid-template-columns: 1fr;
   }
 
+  /* Interactive Filters Mobile Adjustments */
+  .project-filter-toolbar {
+    gap: 8px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  .project-filter-btn {
+    font-size: 0.78rem;
+    padding: 6px 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .skills-filter-container {
+    width: 100%;
+    gap: 14px;
+  }
+
+  .skills-search-box {
+    max-width: 100%;
+  }
+
+  .skills-category-tabs {
+    gap: 8px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .skill-tab-btn {
+    font-size: 0.76rem;
+    padding: 6px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .fcf-bars-track {
+    gap: 6px;
+    padding: 8px 10px;
+    height: 85px;
+  }
+
+  .fcf-bar-fill {
+    max-width: 22px;
+  }
+
   /* Footer */
   .footer-top {
     flex-direction: column;

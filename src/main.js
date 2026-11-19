@@ -10,6 +10,7 @@ import {
   initSpotlightCards,
   initFinancialCalculator,
   initMagneticButtons,
+  initMarketClock,
   prefersReducedMotion
 } from './utils/animations.js';
 import { initThreeScene } from './three/scene.js';
@@ -36,6 +37,9 @@ function initPortfolioApp() {
 
   // 4. Initialize Magnetic Button Micro-interactions
   initMagneticButtons();
+
+  // 5. Initialize Live Global Financial Telemetry Clock
+  initMarketClock();
 
   // 4. Initialize Three.js 3D Background with Market Wave
   let threeScene = null;
