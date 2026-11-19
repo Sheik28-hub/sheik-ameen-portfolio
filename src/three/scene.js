@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { createExecutiveAvatar } from './avatar.js';
 
 /**
  * SHEIK AMEEN — THE FINANCIAL UNIVERSE
@@ -81,15 +82,21 @@ export function initThreeScene() {
   scene.add(gridHelper);
 
   // -------------------------------------------------------------------------
+  // 3B. CENTRAL 3D EXECUTIVE AVATAR (SHEIK AMEEN)
+  // -------------------------------------------------------------------------
+  const avatar = createExecutiveAvatar(scene);
+  let carouselRotationAngle = 0;
+
+  // -------------------------------------------------------------------------
   // 4. THE SIGNATURE HERO GLOBE (THE FINANCIAL UNIVERSE)
   // -------------------------------------------------------------------------
   const globeGroup = new THREE.Group();
   scene.add(globeGroup);
 
-  // Offset globe to the right on desktop for perfect balance with hero typography
-  const globeOffsetX = isMobile ? 0 : 8.2;
-  const globeOffsetY = isMobile ? -2.2 : 0.4;
-  globeGroup.position.set(globeOffsetX, globeOffsetY, -2);
+  // Offset globe to the right-rear for cinematic balance with central 3D avatar
+  const globeOffsetX = isMobile ? 0 : 10.5;
+  const globeOffsetY = isMobile ? -2.2 : 1.2;
+  globeGroup.position.set(globeOffsetX, globeOffsetY, -10);
 
   const globeRadius = isMobile ? 7.2 : 10.2;
   const globeSegments = isMobile ? 24 : 40;
@@ -426,6 +433,11 @@ export function initThreeScene() {
     globeGroup.rotation.y = elapsed * 0.065 + currentMouseX * 0.16;
     globeGroup.rotation.x = currentMouseY * 0.1 + (currentScrollY * 0.0003);
 
+    // Update central 3D Executive Avatar (blinking, breathing, lip-sync, and carousel tracking)
+    if (avatar) {
+      avatar.update(elapsed, carouselRotationAngle);
+    }
+
     // Pulse Financial Hubs
     hubObjects.forEach((h, i) => {
       const pulse = 1 + Math.sin(elapsed * 3 + i) * 0.25;
@@ -509,6 +521,12 @@ export function initThreeScene() {
     updateMouse(x, y) {
       targetMouseX = x;
       targetMouseY = y;
+    },
+    updateCarouselAngle(rad) {
+      carouselRotationAngle = rad;
+    },
+    setAvatarSpeaking(speaking) {
+      if (avatar) avatar.setSpeaking(speaking);
     },
     destroy
   };

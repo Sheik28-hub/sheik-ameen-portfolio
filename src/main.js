@@ -24,6 +24,8 @@ import initEducation from './components/Education.js';
 import initCertifications from './components/Certifications.js';
 import initContact from './components/Contact.js';
 import initFooter from './components/Footer.js';
+import initCarousel360 from './components/Carousel360.js';
+import initVoiceIntro from './components/VoiceIntro.js';
 
 function initPortfolioApp() {
   // 1. Initialize desktop custom cursor
@@ -54,7 +56,13 @@ function initPortfolioApp() {
   // 5. Initialize Navbar
   initNavbar();
 
-  // 6. Initialize All Website Sections
+  // 6. Initialize 360° Cylindrical Rotating Digital World Carousel
+  initCarousel360(threeScene);
+
+  // 7. Initialize AI Voice Introduction Experience
+  initVoiceIntro(threeScene);
+
+  // 8. Initialize All Website Sections
   initHero();
   initAbout();
   initExperience();
