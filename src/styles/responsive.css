@@ -20,7 +20,8 @@
   }
 
   .hero-name {
-    font-size: 4.6rem;
+    font-size: clamp(2.8rem, 4.2vw, 4.0rem);
+    white-space: nowrap;
   }
 
   .section {
@@ -231,8 +232,11 @@
   }
 
   .hero-name {
-    font-size: clamp(2.2rem, 8.5vw, 3.4rem);
-    letter-spacing: -0.015em;
+    font-size: clamp(2.0rem, 8.2vw, 3.0rem);
+    letter-spacing: -0.02em;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em 0.35em;
   }
 
   .hero-tagline {

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="cfaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <radialGradient id="cfaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(245, 158, 11, 0.25)" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="url(#cfaGlow)" />
+  <circle cx="40" cy="40" r="34" fill="#0D1422" stroke="url(#cfaGrad)" stroke-width="2" />
+  <circle cx="40" cy="40" r="28" fill="none" stroke="#F59E0B" stroke-dasharray="2 2" stroke-width="0.75" />
+  <text x="40" y="44" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-size="14" font-weight="800" fill="#F8FAFC" text-anchor="middle" letter-spacing="1">CFA</text>
+  <text x="40" y="55" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#F59E0B" text-anchor="middle" letter-spacing="1.5">INSTITUTE</text>
+</svg>

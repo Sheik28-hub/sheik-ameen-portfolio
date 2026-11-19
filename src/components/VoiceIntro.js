@@ -2,12 +2,13 @@
  * SHEIK AMEEN — AI VOICE INTRODUCTION
  * 
  * Script:
- * "Hello everyone! I'm Sheik Ameen. Welcome to my world, where Finance, Analytics and Technology come together."
+ * "Hello everyone! I'm Sheik Ameen. Welcome to my world. I'm a Business Analyst and Financial Analyst, passionate about transforming data into meaningful business and financial intelligence."
  * 
  * Features:
  * - Natural Indian-English male voice selection via Web Speech API (with fallback)
  * - Play / Pause toggle controls
  * - Real-time animated soundwave bars
+ * - Synchronized live captions display
  * - Lip-sync and gesture synchronization with the 3D Avatar
  */
 
@@ -15,10 +16,11 @@ export default function initVoiceIntro(threeScene) {
   const introBtn = document.getElementById('voice-intro-btn');
   const soundwave = document.getElementById('soundwave-visualizer');
   const introTextEl = document.getElementById('voice-intro-status');
+  const captionsEl = document.getElementById('voice-captions');
 
   if (!introBtn) return;
 
-  const scriptText = "Hello everyone! I'm Sheik Ameen. Welcome to my world, where Finance, Analytics and Technology come together.";
+  const scriptText = "Hello everyone! I'm Sheik Ameen. Welcome to my world. I'm a Business Analyst and Financial Analyst, passionate about transforming data into meaningful business and financial intelligence.";
   let isSpeaking = false;
   let currentUtterance = null;
   let synth = window.speechSynthesis;
@@ -77,6 +79,7 @@ export default function initVoiceIntro(threeScene) {
       if (btnLabel) btnLabel.textContent = 'Pause AI Intro';
       if (soundwave) soundwave.classList.add('active');
       if (introTextEl) introTextEl.textContent = 'Speaking...';
+      if (captionsEl) captionsEl.classList.add('active');
 
       // Trigger Avatar Lip-Sync & Head Gestures
       if (threeScene && threeScene.setAvatarSpeaking) {
@@ -104,6 +107,7 @@ export default function initVoiceIntro(threeScene) {
     if (btnLabel) btnLabel.textContent = 'Listen to AI Intro';
     if (soundwave) soundwave.classList.remove('active');
     if (introTextEl) introTextEl.textContent = 'AI Voice Introduction';
+    if (captionsEl) captionsEl.classList.remove('active');
 
     // Stop Avatar Lip-Sync
     if (threeScene && threeScene.setAvatarSpeaking) {
