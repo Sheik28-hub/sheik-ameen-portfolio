@@ -288,3 +288,30 @@ export function hideLoadingScreen(onComplete) {
 
   if (barFill) barFill.style.width = '20%';
 }
+
+/**
+ * 10. Magnetic Button Hover Physics
+ * Subtle spring attraction toward cursor for premium tactile feel
+ */
+export function initMagneticButtons() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  const buttons = document.querySelectorAll('.btn, .nav-cta-btn, .scenario-btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+      btn.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+
+    btn.addEventListener('mouseenter', () => {
+      btn.style.transition = 'transform 0.1s ease';
+    });
+  });
+}

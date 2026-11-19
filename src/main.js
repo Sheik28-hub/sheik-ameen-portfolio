@@ -9,6 +9,7 @@ import {
   initCustomCursor,
   initSpotlightCards,
   initFinancialCalculator,
+  initMagneticButtons,
   prefersReducedMotion
 } from './utils/animations.js';
 import { initThreeScene } from './three/scene.js';
@@ -32,6 +33,9 @@ function initPortfolioApp() {
 
   // 3. Initialize Interactive Financial Valuation Simulator
   initFinancialCalculator();
+
+  // 4. Initialize Magnetic Button Micro-interactions
+  initMagneticButtons();
 
   // 4. Initialize Three.js 3D Background with Market Wave
   let threeScene = null;
@@ -66,11 +70,11 @@ function initPortfolioApp() {
     }, { passive: true });
   }
 
-  // 8. Professional Console Branding
+  // 9. Professional Console Branding
   console.log(
-    '%c SHEIK AMEEN %c Finance × Analytics ',
+    '%c SHEIK AMEEN %c Finance × Analytics × Technology ',
     'background: #00D4FF; color: #070A12; font-weight: 800; font-size: 14px; padding: 5px 10px; border-radius: 4px 0 0 4px;',
-    'background: #121B2B; color: #94A3B8; font-size: 14px; padding: 5px 10px; border-radius: 0 4px 4px 0;'
+    'background: #141D2B; color: #94A3B8; font-size: 14px; padding: 5px 10px; border-radius: 0 4px 4px 0;'
   );
   console.log(
     '%cTransforming Financial Data into Strategic Decisions.%c\nEmail: ameensheik2902@gmail.com | LinkedIn: linkedin.com/in/sheik-ameen',
