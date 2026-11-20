@@ -13,7 +13,7 @@ import {
   initMarketClock,
   prefersReducedMotion
 } from './utils/animations.js';
-import { initThreeScene } from './three/scene.js';
+import ExperienceController from './core/ExperienceController.js';
 import initNavbar from './components/Navbar.js';
 import initHero from './components/Hero.js';
 import initAbout from './components/About.js';
@@ -27,7 +27,7 @@ import initFooter from './components/Footer.js';
 import initCarousel360 from './components/Carousel360.js';
 import initVoiceIntro from './components/VoiceIntro.js';
 
-function initPortfolioApp() {
+function initPortfolioApp(startCinematic = false) {
   // 1. Initialize desktop custom cursor
   initCustomCursor();
 
@@ -43,26 +43,26 @@ function initPortfolioApp() {
   // 5. Initialize Live Global Financial Telemetry Clock
   initMarketClock();
 
-  // 4. Initialize Three.js 3D Background with Market Wave
+  // 6. Initialize Master Experience Controller (Beyond The Universe 3D Engine)
   let threeScene = null;
   if (!prefersReducedMotion) {
     try {
-      threeScene = initThreeScene();
+      threeScene = new ExperienceController('three-canvas');
     } catch (err) {
-      console.warn('Three.js failed to initialize, using CSS fallback:', err);
+      console.warn('[main.js] ExperienceController failed to initialize, using fallback:', err);
     }
   }
 
-  // 5. Initialize Navbar
+  // 7. Initialize Navbar
   initNavbar();
 
-  // 6. Initialize 360° Cylindrical Rotating Digital World Carousel
+  // 8. Initialize 360° Cylindrical Rotating Digital World Carousel
   initCarousel360(threeScene);
 
-  // 7. Initialize AI Voice Introduction Experience
+  // 9. Initialize AI Voice Introduction Experience
   initVoiceIntro(threeScene);
 
-  // 8. Initialize All Website Sections
+  // 10. Initialize All Website Sections
   initHero();
   initAbout();
   initExperience();
@@ -73,7 +73,7 @@ function initPortfolioApp() {
   initContact();
   initFooter();
 
-  // 7. Connect Global Mouse Coordinates to Three.js for Parallax
+  // 11. Connect Global Mouse Coordinates to ExperienceController for Parallax
   if (threeScene && threeScene.updateMouse) {
     window.addEventListener('mousemove', (e) => {
       const normalizedX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -82,16 +82,20 @@ function initPortfolioApp() {
     }, { passive: true });
   }
 
-  // 9. Professional Console Branding
+  // 12. Handle Cinematic Opening Sequence vs Direct Skip
+  if (threeScene && threeScene.introTimeline) {
+    if (startCinematic) {
+      threeScene.introTimeline.start();
+    } else {
+      threeScene.introTimeline.skip();
+    }
+  }
+
+  // 13. Professional Console Branding
   console.log(
-    '%c SHEIK AMEEN %c Finance × Analytics × Technology ',
+    '%c SHEIK AMEEN — BEYOND THE UNIVERSE %c Finance × Analytics × Technology ',
     'background: #00D4FF; color: #070A12; font-weight: 800; font-size: 14px; padding: 5px 10px; border-radius: 4px 0 0 4px;',
     'background: #141D2B; color: #94A3B8; font-size: 14px; padding: 5px 10px; border-radius: 0 4px 4px 0;'
-  );
-  console.log(
-    '%cTransforming Financial Data into Strategic Decisions.%c\nEmail: ameensheik2902@gmail.com | LinkedIn: linkedin.com/in/sheik-ameen',
-    'color: #00D4FF; font-weight: 600; font-size: 12px;',
-    'color: #64748B; font-size: 11px;'
   );
 }
 

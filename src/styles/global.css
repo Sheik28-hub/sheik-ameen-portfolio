@@ -526,6 +526,66 @@ button {
   font-size: 0.78rem;
   color: var(--text-muted);
   letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.loading-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  animation: actionsReveal 0.5s ease forwards;
+}
+
+.start-universe-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.95), rgba(104, 101, 242, 0.95));
+  color: #070A12;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.start-universe-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(0, 212, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.start-universe-icon {
+  font-size: 0.82rem;
+  color: #070A12;
+}
+
+.skip-universe-btn {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.skip-universe-btn:hover {
+  color: var(--accent-primary);
+  border-color: rgba(0, 212, 255, 0.35);
+}
+
+@keyframes actionsReveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --------------------------------------------------------------------------

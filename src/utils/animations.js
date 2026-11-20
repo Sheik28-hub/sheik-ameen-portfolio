@@ -298,15 +298,36 @@ export function hideLoadingScreen(onComplete) {
       if (barFill) barFill.style.width = `${steps[currentStep].progress}%`;
     } else {
       clearInterval(interval);
-      setTimeout(() => {
+
+      const actionsEl = document.getElementById('loading-actions');
+      const startBtn = document.getElementById('start-experience-btn');
+      const skipBtn = document.getElementById('skip-experience-btn');
+
+      const dismissScreen = (startCinematic) => {
         loading.classList.add('hide');
         setTimeout(() => {
           loading.style.display = 'none';
-          if (onComplete) onComplete();
-        }, 800);
-      }, 350);
+          if (onComplete) onComplete(startCinematic);
+        }, 700);
+      };
+
+      if (actionsEl && startBtn && skipBtn) {
+        actionsEl.style.display = 'flex';
+
+        startBtn.addEventListener('click', () => {
+          dismissScreen(true);
+        }, { once: true });
+
+        skipBtn.addEventListener('click', () => {
+          dismissScreen(false);
+        }, { once: true });
+      } else {
+        setTimeout(() => {
+          dismissScreen(false);
+        }, 450);
+      }
     }
-  }, 400);
+  }, 350);
 
   if (barFill) barFill.style.width = '20%';
 }
